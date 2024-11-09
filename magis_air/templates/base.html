@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Magis Air{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>Magis Air</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'crew_assignments:crew_list' %}">Crew Assignments</a></li>
+                <li><a href="{% url 'flight_routes:route_list' %}">Flight Routes</a></li>
+                <li><a href="{% url 'flights_schedules:schedule_list' %}">Flight Schedules</a></li>
+                <li><a href="{% url 'flight_booking:booking_list' %}">Bookings</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Magis Air</p>
+    </footer>
+</body>
+</html>

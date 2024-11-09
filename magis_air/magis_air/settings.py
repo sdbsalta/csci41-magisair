@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ba7k&)98y0hd-9=yr^(p!qc!+61-r+n)=!9lqhh%)tm9da_kc)'
+SECRET_KEY = os.getenv('SECRET_KEY')
+load_dotenv()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,9 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'passenger'
-    'flight_routes'
-    'flight_schedules'
+    'flight_booking',
+    'flight_routes',
+    'flight_schedules',
+    'crew_assignments',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +61,10 @@ ROOT_URLCONF = 'magis_air.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+            BASE_DIR / "magis_air/crew_assignments/templates",  
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Crew Member Form{% endblock %}
+
+{% block content %}
+    <h2>{% if object %}Update{% else %}Add New{% endif %} Crew Member</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+        <a href="{% url 'crew_assignments:crew_list' %}">Cancel</a>
+    </form>
+{% endblock %}

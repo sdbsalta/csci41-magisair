@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Crew Members{% endblock %}
+
+{% block content %}
+    <h2>Crew Members</h2>
+    <a href="{% url 'crew_assignments:crew_create' %}">Add New Crew Member</a>
+    <ul>
+        {% for crew in object_list %}
+            <li>
+                {{ crew.crew_id }} - {{ crew.role }}
+                <a href="{% url 'crew_assignments:crew_update' crew.pk %}">Edit</a> |
+                <a href="{% url 'crew_assignments:crew_delete' crew.pk %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
