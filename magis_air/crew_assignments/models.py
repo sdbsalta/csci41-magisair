@@ -3,9 +3,21 @@ from datetime import datetime
 from django.core.exceptions import ValidationError
 
 class CrewMember(models.Model):
+    CAPTAIN = 'Captain'
+    FIRST_OFFICER = 'First Officer'
+    FLIGHT_ATTENDANT = 'Flight Attendant'
+    FLIGHT_ENGINEER = 'Flight Engineer'
+    
+    CREW_ROLE_CHOICES = [
+        (CAPTAIN, 'Captain'),
+        (FIRST_OFFICER, 'First Officer'),
+        (FLIGHT_ATTENDANT, 'Flight Attendant'),
+        (FLIGHT_ENGINEER, 'Flight Engineer'),
+    ]
+
     # Crew_ID must be a unique 6-digit number, automatically generated
     crew_id = models.CharField(primary_key=True, max_length=6, unique=True)
-    role = models.CharField(max_length=100, blank=True)  # Allow role to be blank, but not null
+    role = models.CharField(max_length=100, choices=CREW_ROLE_CHOICES, blank=False)  # Crew role with choices
 
     # Many-to-many relationship with FlightSchedule
     flight_schedules = models.ManyToManyField('FlightSchedule', related_name='crew_members_in_schedule')
