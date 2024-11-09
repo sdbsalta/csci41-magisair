@@ -8,6 +8,7 @@ def home(request):
 
 class CrewMemberListView(ListView):
     model = CrewMember
+    fields = ['crew_id', 'role', 'flight_schedules']
     template_name = 'crew_list.html'
 
 class CrewMemberCreateView(CreateView):

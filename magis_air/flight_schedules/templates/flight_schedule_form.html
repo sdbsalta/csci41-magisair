@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Flight Schedule Form{% endblock %}
+
+{% block content %}
+    <h2>{% if object %}Update{% else %}Add New{% endif %} Flight Schedules</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <fieldset>
+          <legend>Select Crew Members</legend>
+          {% for crew in crew_members %}
+              <label>
+                  <input type="checkbox" name="crew_members" value="{{ crew.id }}">
+                  {{ crew.crew_id }} - {{ crew.role }}
+              </label><br>
+          {% endfor %}
+      </fieldset>
+      <button type="submit">Save</button>
+      <a href="{% url 'flight_schedules:flight_schedule_list' %}">Cancel</a>
+    </form>
+{% endblock %}

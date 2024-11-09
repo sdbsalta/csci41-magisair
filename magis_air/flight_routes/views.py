@@ -5,21 +5,21 @@ from .models import Flight
 
 class FlightListView(ListView):
     model = Flight
-    template_name = 'flight_routes/flight_list.html'
+    template_name = 'flight_list.html'
 
 class FlightCreateView(CreateView):
     model = Flight
     fields = ['flight_id', 'origin', 'destination', 'travel_duration', 'departure_time']
-    template_name = 'flight_routes/flight_form.html'
-    success_url = reverse_lazy('flight_list')
+    template_name = 'flight_form.html'
+    success_url = reverse_lazy('flight_routes:flight_list')
 
 class FlightUpdateView(UpdateView):
     model = Flight
     fields = ['origin', 'destination', 'travel_duration', 'departure_time']
-    template_name = 'flight_routes/flight_form.html'
-    success_url = reverse_lazy('flight_list')
+    template_name = 'flight_form.html'
+    success_url = reverse_lazy('flight_routes:flight_list')
 
 class FlightDeleteView(DeleteView):
     model = Flight
-    template_name = 'flight_routes/flight_confirm_delete.html'
-    success_url = reverse_lazy('flight_list')
+    template_name = 'flight_confirm_delete.html'
+    success_url = reverse_lazy('flight_routes:flight_list')

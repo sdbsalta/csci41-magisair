@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Flight Schedules{% endblock %}
+
+{% block content %}
+    <h2>Flight Schedules</h2>
+    <a href="{% url 'flight_schedules:flight_schedule_create' %}">Add New Schedule</a>
+    <ul>
+        {% for schedule in object_list %}
+            <li>
+                {{ schedule.schedule_id }} - {{ schedule.date }}
+                <a href="{% url 'flight_schedules:flight_schedule_update' schedule.pk %}">Edit</a> |
+                <a href="{% url 'flight_schedules:flight_schedule_delete' schedule.pk %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
