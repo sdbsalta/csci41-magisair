@@ -24,5 +24,5 @@ urlpatterns = [
     path('<str:pk>/delete/', views.FlightScheduleDeleteView.as_view(), name='flight_schedule_delete'),
 ]
 
-app_name = 'flights_schedules'
+app_name = 'flight_schedules'
 

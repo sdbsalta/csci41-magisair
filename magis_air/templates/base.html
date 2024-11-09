@@ -10,11 +10,12 @@
         <h1>Magis Air</h1>
         <nav>
             <ul>
+                <li><a href="{% url 'home' %}">Home</a></li> <!-- Link to the homepage -->
                 <li><a href="{% url 'crew_assignments:crew_list' %}">Crew Assignments</a></li>
                 <li><a href="{% url 'flight_routes:flight_list' %}">Flight Routes</a></li>
-                <li><a href="{% url 'flights_schedules:flight_schedule_list' %}">Flight Schedules</a></li>
+                <li><a href="{% url 'flight_schedules:flight_schedule_list' %}">Flight Schedules</a></li>
                 <li><a href="{% url 'flight_booking:booking_list' %}">Bookings</a></li>
-            </ul>            
+            </ul>
         </nav>
     </header>
     

@@ -25,4 +25,4 @@ urlpatterns = [
     path('bookings/<str:pk>/delete/', views.BookingDeleteView.as_view(), name='booking_delete'),
 ]
 
-app_name = 'crew_assignments'
+app_name = 'flight_booking'
