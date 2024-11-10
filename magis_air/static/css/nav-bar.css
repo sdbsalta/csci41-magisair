@@ -12,5 +12,16 @@
 }
 
 .navbar a:hover {
-    color: var(--blue-03);
+    color: var(--blue-02);
+}
+
+.navbar ul {
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0;
+    display: flex; 
+}
+
+.navbar li {
+    margin-right: 1.5rem;
 }
