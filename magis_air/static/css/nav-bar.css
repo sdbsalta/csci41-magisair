@@ -1,0 +1,15 @@
+.navbar {
+    background-color: var(--blue);
+    padding: 1rem;
+}
+
+.navbar a {
+    color: var(--neutral-01);
+    font-size: var(--subtitle-font-size);
+    text-decoration: none;
+    margin-right: 1.5rem;
+}
+
+.navbar a:hover {
+    color: var(--blue-03);
+}
