@@ -22,24 +22,23 @@ class CrewMember(models.Model):
     # Many-to-many relationship with FlightSchedule
     flight_schedules = models.ManyToManyField('FlightSchedule', related_name='crew_members_in_schedule')
 
-    def clean(self):
-        # Custom validation for crew_id to ensure it's a 6-digit number
-        if not self.crew_id.isdigit() or len(self.crew_id) != 6:
-            raise ValidationError({'crew_id': 'Crew ID must be a 6-digit number.'})
+    # def clean(self):
+    #     # Custom validation for crew_id to ensure it's a 6-digit number
+    #     if not self.crew_id.isdigit() or len(self.crew_id) != 6:
+    #         raise ValidationError({'crew_id': 'Crew ID must be a 6-digit number.'})
 
-        if self.role is None:
-            raise ValidationError({'role': 'Role cannot be null.'})
+    #     if self.role is None:
+    #         raise ValidationError({'role': 'Role cannot be null.'})
 
     def save(self, *args, **kwargs):
-        # Automatically generate crew_id if not provided
         if not self.crew_id:
-            last_crew_member = CrewMember.objects.all().order_by('-crew_id').first()
-            last_seq_num = int(last_crew_member.crew_id) if last_crew_member else 0
-            new_seq_num = last_seq_num + 1
-            self.crew_id = str(new_seq_num).zfill(6)  # Ensure it is 6 digits long
-
-        self.clean()  # Call custom validation method before saving
-        
+            last_crew = CrewMember.objects.all().order_by('crew_id').last()
+            if last_crew:
+                last_id = int(last_crew.crew_id)
+                new_id = last_id + 1
+            else:
+                new_id = 1
+            self.crew_id = f"{new_id:06d}"
         super().save(*args, **kwargs)
 
     def __str__(self):

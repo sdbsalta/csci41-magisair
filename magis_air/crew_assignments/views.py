@@ -13,7 +13,7 @@ class CrewMemberListView(ListView):
 
 class CrewMemberCreateView(CreateView):
     model = CrewMember
-    fields = ['crew_id', 'role']
+    fields = ['role']
     template_name = 'crew_form.html'
     success_url = reverse_lazy('crew_assignments:crew_list')
 
