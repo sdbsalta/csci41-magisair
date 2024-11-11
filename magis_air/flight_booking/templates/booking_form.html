@@ -3,6 +3,11 @@
 {% block title %}Create / Update Booking{% endblock %}
 
 {% block content %}
+
+<p><a href="{% url 'flight_booking:passenger_create' %}">
+    <button>Create New Passenger</button>
+</a></p>
+
     <h2>{% if object %}Update Booking{% else %}Create Booking{% endif %}</h2>
     
     <form method="post">
@@ -11,7 +16,4 @@
         <button type="submit">Save</button>
     </form>
     
-    <p><a href="{% url 'flight_booking:passenger_create' %}">
-        <button>Create New Passenger</button>
-    </a></p>
 {% endblock %}

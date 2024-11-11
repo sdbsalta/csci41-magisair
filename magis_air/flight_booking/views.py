@@ -19,11 +19,11 @@ class BookingListView(ListView):
 
 class BookingCreateView(CreateView):
     model = Booking
-    fields = ['field1', 'field2', 'field3']
+    fields = ['booking_id', 'total_cost', 'passenger', 'flight', 'additional_items']
     template_name = 'booking_form.html'
 
     def get_success_url(self):
-        return reverse_lazy('booking_list')
+        return reverse_lazy('flight_booking:booking_list')
 
 class BookingUpdateView(UpdateView):
     model = Booking
