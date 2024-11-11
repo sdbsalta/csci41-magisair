@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Passenger{% endblock %}
+
+{% block content %}
+    <h2>Create New Passenger</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}  
+        <button type="submit">Save Passenger</button>
+    </form>
+    <p><a href="{% url 'flight_booking:passenger_list' %}">Back to Passenger List</a></p>
+{% endblock %}

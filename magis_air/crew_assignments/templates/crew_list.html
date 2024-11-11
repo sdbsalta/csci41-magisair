@@ -9,8 +9,17 @@
         {% for crew in object_list %}
             <li>
                 {{ crew.crew_id }} - {{ crew.role }}
-                <a href="{% url 'crew_assignments:crew_update' crew.pk %}">Edit</a> |
+                <a href="{% url 'crew_assignments:crew_update' crew.pk %}">Edit</a> 
                 <a href="{% url 'crew_assignments:crew_delete' crew.pk %}">Delete</a>
+                {% if crew.flight_schedules.all %}
+                    <ul>
+                        {% for schedule in crew.flight_schedules.all %}
+                            <li>{{ schedule.schedule_id }} on {{ schedule.date }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No assigned schedules</p>
+                {% endif %}
             </li>
         {% endfor %}
     </ul>

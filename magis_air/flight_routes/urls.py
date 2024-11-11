@@ -22,6 +22,7 @@ urlpatterns = [
     path('create/', views.FlightCreateView.as_view(), name='flight_create'),
     path('<str:pk>/update/', views.FlightUpdateView.as_view(), name='flight_update'),
     path('<str:pk>/delete/', views.FlightDeleteView.as_view(), name='flight_delete'),
+    path('<str:pk>/', views.FlightDetailView.as_view(), name='flight_detail'),  # Add this line
 ]
 
 app_name = 'flight_routes'

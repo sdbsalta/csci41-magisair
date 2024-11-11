@@ -11,7 +11,8 @@
           <legend>Select Crew Members</legend>
           {% for crew in crew_members %}
               <label>
-                  <input type="checkbox" name="crew_members" value="{{ crew.id }}">
+                  <input type="checkbox" name="crew_members" value="{{ crew.crew_id }}"
+                    {% if crew in selected_crew_members %}checked{% endif %}>
                   {{ crew.crew_id }} - {{ crew.role }}
               </label><br>
           {% endfor %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Booking List{% endblock %}
+
+{% block content %}
+    <h2>Booking List</h2>
+    <ul>
+        {% for booking in object_list %}
+            <li>
+                {{ booking.booking_id }} - {{ booking.passenger.name }} - {{ booking.total_cost }} USD
+                <a href="{% url 'flight_booking:booking_update' booking.pk %}">Edit</a>
+                <a href="{% url 'flight_booking:booking_delete' booking.pk %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'flight_booking:booking_create' %}">Create a new booking</a>
+{% endblock %}
