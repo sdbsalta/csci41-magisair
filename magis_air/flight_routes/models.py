@@ -1,6 +1,14 @@
 import random
 import string
+from datetime import datetime, timedelta
 from django.db import models
+
+CITY_CHOICES = [
+    ('Manila, Philippines', 'Manila, Philippines'),
+    ('New York, USA', 'New York, USA'),
+    ('London, UK', 'London, UK'),
+    ('Tokyo, Japan', 'Tokyo, Japan'),
+]
 
 def generate_flight_id():
     # Generate a random alphabetic code of two letters (YY)
@@ -12,18 +20,30 @@ def generate_flight_id():
 
 class Flight(models.Model):
     flight_id = models.CharField(max_length=6, primary_key=True, unique=True, default=generate_flight_id)
-    origin = models.CharField(max_length=255)
-    destination = models.CharField(max_length=255)
-    travel_duration = models.DurationField()
-    departure_time = models.TimeField()
+    origin = models.CharField(max_length=255, choices=CITY_CHOICES, default='Manila, Philippines')
+    destination = models.CharField(max_length=255, choices=CITY_CHOICES, default='Manila, Philippines')
+    
+    # Set default value for travel_duration to 00:00:00 (a 0-day, 0-hour, 0-minute duration)
+    travel_duration = models.DurationField(default=timedelta(hours=0, minutes=0))
+    
+    # Set default value for departure_time to 00:00 (midnight)
+    departure_time = models.TimeField(default="00:00")
+    
+    @property
+    def formatted_travel_duration(self):
+        # Format the travel duration as HH:MM
+        hours, remainder = divmod(self.travel_duration.seconds, 3600)
+        minutes, _ = divmod(remainder, 60)
+        return f"{hours:02}:{minutes:02}"
 
     @property
     def arrival_time(self):
         # Calculate arrival time based on departure time and travel duration
         if self.departure_time and self.travel_duration:
-            from datetime import datetime, timedelta
+            # Combine today's date with the departure time
             dep_datetime = datetime.combine(datetime.today(), self.departure_time)
-            return (dep_datetime + self.travel_duration).time()
+            arrival_datetime = dep_datetime + self.travel_duration
+            return arrival_datetime.time()
         return None
 
     def __str__(self):

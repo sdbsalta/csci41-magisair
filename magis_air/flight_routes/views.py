@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.urls import reverse_lazy
 from .models import Flight
 
@@ -23,3 +23,8 @@ class FlightDeleteView(DeleteView):
     model = Flight
     template_name = 'flight_confirm_delete.html'
     success_url = reverse_lazy('flight_routes:flight_list')
+
+class FlightDetailView(DetailView):
+    model = Flight
+    template_name = 'flight_detail.html'
+    context_object_name = 'flight'  
