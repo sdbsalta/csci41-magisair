@@ -9,7 +9,7 @@ class FlightScheduleListView(ListView):
 
 class FlightScheduleCreateView(CreateView):
     model = FlightSchedule
-    fields = ['schedule_id', 'date', 'flight']
+    fields = ['date', 'flight']
     template_name = 'flight_schedule_form.html'
     success_url = reverse_lazy('flight_schedules:flight_schedule_list')
 
@@ -32,6 +32,7 @@ class FlightScheduleCreateView(CreateView):
             crew_member.flight_schedules.add(flight_schedule)
             
         # After saving, redirect to the success URL (flight_schedule list)
+
         return redirect(self.success_url)
 
 class FlightScheduleUpdateView(UpdateView):
