@@ -6,7 +6,27 @@
     <h2>{% if object %}Update{% else %}Add New Flight{% endif %} Crew Member</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <p>Flight ID: 
+            <input type="text" id="id_flight_id" name="flight_id" value="{{ form.flight_id.value }}" readonly class="form-control">
+        </p>
+        <p>Origin: {{ form.origin }}</p>
+        <p>Destination: {{ form.destination }}</p>
+        <p><strong>Travel Duration:</strong> {{ form.travel_duration_hours }} hours and {{ form.travel_duration_minutes }} minutes</p>
+        {% if form.travel_duration_hours.errors %}
+            <ul class="errorlist">
+                {% for error in form.travel_duration_hours.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% if form.travel_duration_minutes.errors %}
+            <ul class="errorlist">
+                {% for error in form.travel_duration_minutes.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <p>Departure Time: {{ form.departure_time }}</p>
         <button type="submit">Save</button>
         <a href="{% url 'flight_routes:flight_list' %}">Cancel</a>
     </form>

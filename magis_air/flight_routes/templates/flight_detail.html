@@ -7,8 +7,8 @@
     <p><strong>Flight ID:</strong> {{ flight.flight_id }}</p>
     <p><strong>Origin:</strong> {{ flight.origin }}</p>
     <p><strong>Destination:</strong> {{ flight.destination }}</p>
-    <p><strong>Travel Duration:</strong> {{ flight.travel_duration }}</p>
-    <p><strong>Departure Time:</strong> {{ flight.departure_time }}</p>
+    <p><strong>Travel Duration:</strong> {{ flight.travel_duration_hours }} hours and {{ flight.travel_duration_minutes }} minutes</p>
+    <p><strong>Departure Time:</strong> {{ flight.departure_time|date:"H:i" }} </p>
     <p><strong>Arrival Time:</strong> {{ flight.arrival_time }}</p>
     <a href="{% url 'flight_routes:flight_list' %}">Back to Flight List</a>
 {% endblock %}
