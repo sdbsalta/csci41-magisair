@@ -28,7 +28,7 @@ class FlightCreateView(CreateView):
 
 class FlightUpdateView(UpdateView):
     model = Flight
-    fields = ['origin', 'destination', 'travel_duration', 'departure_time']
+    fields = ['flight_id', 'origin', 'destination', 'travel_duration_hours', 'travel_duration_minutes', 'departure_time']
     template_name = 'flight_form.html'
     success_url = reverse_lazy('flight_routes:flight_list')
 

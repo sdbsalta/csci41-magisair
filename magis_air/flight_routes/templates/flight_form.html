@@ -3,7 +3,7 @@
 {% block title %}Flight Form{% endblock %}
 
 {% block content %}
-    <h2>{% if object %}Update{% else %}Add New Flight{% endif %} Crew Member</h2>
+    <h2>{% if object %}Update{% else %}Add{% endif %} Flight</h2>
     <form method="post">
         {% csrf_token %}
         <p>Flight ID: 
