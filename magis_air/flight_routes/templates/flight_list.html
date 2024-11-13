@@ -1,19 +1,81 @@
 {% extends "base.html" %}
 
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/colors.css' %}" />
+<link rel="stylesheet" href="{% static 'css/fonts.css' %}" />
+<link rel="stylesheet" href="{% static 'css/global.css' %}" />
+<link rel="stylesheet" href="{% static 'css/nav-bar.css' %}" />
+<link rel="stylesheet" href="{% static 'css/icon.css' %}">
+
 {% block title %}Flights{% endblock %}
 
+<style>
+    .header{
+        color: var(--blue-08);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+    
+    th {
+        background-color: var(--neutral-01);
+        color: var(--blue-07);
+    }
+    
+    a {
+        text-decoration: none;
+    }
+    
+    a:hover {
+        text-decoration: underline;
+    }
+    
+</style>
+
 {% block content %}
-    <h2>Flights</h2>
+    <h2 class="header">Available Flight Routes</h2>
     <a href="{% url 'flight_routes:flight_create' %}">Add New Flight</a>
-    <ul>
-        {% for flight in object_list %}
-            <li>
-                <a href="{% url 'flight_routes:flight_detail' flight.pk %}">
-                    {{ flight.flight_id }}
-                </a> 
-                <a href="{% url 'flight_routes:flight_update' flight.pk %}">Edit</a> 
-                <a href="{% url 'flight_routes:flight_delete' flight.pk %}">Delete</a>
-            </li>
-        {% endfor %}
-    </ul>
+    
+     <!-- Table to display flight information -->
+     <table>
+        <thead>
+            <tr>
+                <th>Flight ID</th>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>Travel Duration</th>
+                <th>Departure Time</th>
+                <th>Actions</th> <!-- For Edit and Delete links -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for flight in object_list %}
+                <tr>
+                    <td>
+                        <a href="{% url 'flight_routes:flight_detail' flight.pk %}">
+                            {{ flight.flight_id }}
+                        </a>
+                    </td>
+                    <td>{{ flight.origin }}</td>
+                    <td>{{ flight.destination }}</td>
+                    <td>{{ flight.travel_duration }}</td>
+                    <td>{{ flight.departure_time }}</td>
+                    <td>
+                        <a href="{% url 'flight_routes:flight_update' flight.pk %}">Edit</a> |
+                        <a href="{% url 'flight_routes:flight_delete' flight.pk %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
