@@ -1,11 +1,33 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block title %}Flights{% endblock %}
 
 {% block styles %}
 <style>
     body {
         background-color: var(--tertiary-01);
+        position: relative;
+    }
+
+    #top-right-svg,
+    #bottom-left-svg {
+        position: absolute;
+        z-index: -1; 
+    }
+
+    #top-right-svg {
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
+
+    #bottom-left-svg {
+        position: fixed;
+        transform: scaleX(-1);
+        bottom: 0;
+        left: 0;
     }
 
     #flightroutes {
@@ -54,6 +76,9 @@
 
 {% block content %}
 <div id="flightroutes">
+    <img id="top-right-svg" src="{% static 'svg/continent.svg' %}" alt="Top Right Continent" />
+    <img id="bottom-left-svg" src="{% static 'svg/continent.svg' %}" alt="Bottom Left Continent" />
+    
     <h1 class="header">Available Flight Routes</h2>
     
      <!-- Table to display flight information -->
