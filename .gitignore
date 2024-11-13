@@ -7,7 +7,7 @@ myenv/
 db.sqlite3
 .DS_Stxore
 
-**/**/__pycache__/
+**/__pycache__/
 *.pyc
 __pycache__/
 magis_air/__pycache__/
