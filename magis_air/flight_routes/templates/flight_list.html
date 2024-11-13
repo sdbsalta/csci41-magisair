@@ -1,50 +1,49 @@
 {% extends "base.html" %}
 
-{% load static %}
-
-<link rel="stylesheet" href="{% static 'css/colors.css' %}" />
-<link rel="stylesheet" href="{% static 'css/fonts.css' %}" />
-<link rel="stylesheet" href="{% static 'css/global.css' %}" />
-<link rel="stylesheet" href="{% static 'css/nav-bar.css' %}" />
-<link rel="stylesheet" href="{% static 'css/icon.css' %}">
-
 {% block title %}Flights{% endblock %}
 
+{% block styles %}
 <style>
-    .header{
+    #flightroutes {
+        background-color: var(--neutral-01);
+        margin-left: 5rem;
+        margin-right: 5rem;
+    }
+    #flightroutes .header{
         color: var(--blue-08);
     }
 
-    table {
+    #flightroutes table {
         width: 100%;
         border-collapse: collapse;
         margin-top: 20px;
     }
     
-    th, td {
+    #flightroutes th, td {
         padding: 10px;
         text-align: left;
         border: 1px solid #ddd;
     }
     
-    th {
+    #flightroutes th {
         background-color: var(--neutral-01);
         color: var(--blue-07);
     }
     
-    a {
+    #flightroutes a {
         text-decoration: none;
     }
     
-    a:hover {
+    #flightroutes a:hover {
         text-decoration: underline;
     }
     
 </style>
+{% endblock %}
 
 {% block content %}
+<div id="flightroutes">
     <h2 class="header">Available Flight Routes</h2>
-    <a href="{% url 'flight_routes:flight_create' %}">Add New Flight</a>
     
      <!-- Table to display flight information -->
      <table>
@@ -78,4 +77,7 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <a href="{% url 'flight_routes:flight_create' %}">Add New Flight</a>
+</div>
 {% endblock %}
