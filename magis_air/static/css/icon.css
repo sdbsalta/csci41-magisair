@@ -3,7 +3,7 @@
 }
 
 .icon {
-    width: var(--icon-size);
     height: var(--icon-size);
     vertical-align: middle;
+    margin-right: 0.50rem;
 }
