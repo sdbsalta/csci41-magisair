@@ -1,0 +1,38 @@
+.button.hovered,
+.button.enabled:hover {
+    color: var(--button-hover-color);
+    background: var(--button-hover-bg-color);
+    border-color: var(--button-hover-border-color);
+}
+
+.button.selected {
+    color: var(--button-selected-color);
+    background: var(--button-selected-bg-color);
+    border-color: var(--button-selected-border-color);
+}
+
+.button.disabled,
+.button[disabled] {
+    color: var(--button-disabled-color);
+    background: var(--button-disabled-bg-color);
+    border-color: var(--button-disabled-border-color);
+}
+
+.button.disabled.filled {
+    --button-disabled-color: var(--white);
+    --button-disabled-bg-color: var(--neutral-06);
+    --button-disabled-border-color: var(--neutral-06);
+}
+
+.button.disabled.outlined {
+    --button-disabled-color: var(--neutral-06);
+    --button-disabled-bg-color: transparent;
+    --button-disabled-border-color: var(--neutral-06);
+}
+
+
+.button.disabled.ghost {
+    --button-disabled-color: var(--neutral-07);
+    --button-disabled-bg-color: transparent;
+    --button-disabled-border-color: var(--white);
+}
