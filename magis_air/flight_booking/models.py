@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils import timezone
-import random
 
 class Passenger(models.Model):
     # Generate the passenger ID manually in the save method

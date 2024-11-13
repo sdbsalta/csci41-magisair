@@ -20,15 +20,7 @@ class CrewMember(models.Model):
     role = models.CharField(max_length=100, choices=CREW_ROLE_CHOICES, blank=False)  # Crew role with choices
 
     # Many-to-many relationship with FlightSchedule
-    flight_schedules = models.ManyToManyField('FlightSchedule', related_name='crew_members_in_schedule')
-
-    # def clean(self):
-    #     # Custom validation for crew_id to ensure it's a 6-digit number
-    #     if not self.crew_id.isdigit() or len(self.crew_id) != 6:
-    #         raise ValidationError({'crew_id': 'Crew ID must be a 6-digit number.'})
-
-    #     if self.role is None:
-    #         raise ValidationError({'role': 'Role cannot be null.'})
+    flight_schedules = models.ManyToManyField('flight_schedules.FlightSchedule', related_name='crew_members_in_schedule')
 
     def save(self, *args, **kwargs):
         if not self.crew_id:

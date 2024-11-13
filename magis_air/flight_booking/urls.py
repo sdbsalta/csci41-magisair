@@ -19,7 +19,9 @@ from . import views
 
 urlpatterns = [
     path('passengers/', views.PassengerListView.as_view(), name='passenger_list'),
+    path('passengers/create/', views.PassengerCreateView.as_view(), name='passenger_create'),  
     path('bookings/', views.BookingListView.as_view(), name='booking_list'),
+    path('booking_list/', views.BookingListView.as_view(), name='booking_list'),
     path('bookings/create/', views.BookingCreateView.as_view(), name='booking_create'),
     path('bookings/<str:pk>/update/', views.BookingUpdateView.as_view(), name='booking_update'),
     path('bookings/<str:pk>/delete/', views.BookingDeleteView.as_view(), name='booking_delete'),

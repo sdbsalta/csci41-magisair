@@ -11,6 +11,10 @@ class CrewMemberListView(ListView):
     fields = ['crew_id', 'role', 'flight_schedules']
     template_name = 'crew_list.html'
 
+    def get_queryset(self):
+        # Prefetch related flight schedules for each crew member to avoid extra queries
+        return CrewMember.objects.prefetch_related('flight_schedule_crew_members')
+
 class CrewMemberCreateView(CreateView):
     model = CrewMember
     fields = ['role']

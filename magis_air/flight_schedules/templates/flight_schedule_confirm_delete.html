@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Flight Schedule{% endblock %}
+
+{% block content %}
+    <h2>Delete Flight Schedule</h2>
+    <p>Are you sure you want to delete {{ object.schedule_id }} - {{ object.date }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm</button>
+        <a href="{% url 'crew_assignments:crew_list' %}">Cancel</a>
+    </form>
+{% endblock %}
