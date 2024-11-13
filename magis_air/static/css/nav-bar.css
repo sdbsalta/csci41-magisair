@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--blue);
+    background-color: var(--primary);
     padding: 1rem;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .navbar a:hover {
-    color: var(--blue-02);
+    color: var(--primary-02);
 }
 
 /* Adjust spacing for list items */
