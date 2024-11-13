@@ -1,3 +1,20 @@
+.button {
+    color: var(--button-enabled-color, white);
+    background: var(--button-enabled-bg-color, black);
+    text-decoration: none;
+}
+
+.button.primary.filled {
+    --button-enabled-bg-color: var(--primary);
+    --button-enabled-border-color: var(--primary);
+
+    --button-hover-bg-color: var(--primary-07);
+    --button-hover-border-color: var(--primary-07);
+
+    --button-selected-bg-color: var(--primary-09);
+    --button-selected-border-color: var(--primary-09);
+}
+
 .button.hovered,
 .button.enabled:hover {
     color: var(--button-hover-color);
