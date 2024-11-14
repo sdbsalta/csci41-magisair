@@ -1,9 +1,42 @@
 {% extends 'base.html' %}
 
 {% block title %}Booking List{% endblock %}
+{% block styles %}
+<style>
+    body {
+        background-color: var(--tertiary-01);
+        position: relative;
+    }
 
+    #bookings {
+        padding-left: 5rem;
+        padding-right: 5rem;
+        padding-top: 3.5rem;
+        text-align: center;
+    }
+    
+    #bookings .header{
+        color: var(--primary-08);
+    }
+
+    #bookings a {
+        text-decoration: none;
+    }
+    
+    #bookings a:hover {
+        text-decoration: underline;
+    }
+
+    #bookings button {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+</style>
+{% endblock %}
 {% block content %}
-    <h2>Booking List</h2>
+<div id="bookings">
+    <h1 class="header">Current Bookings</h1>
     <ul>
         {% for booking in object_list %}
             <li>
@@ -13,5 +46,8 @@
             </li>
         {% endfor %}
     </ul>
-    <a href="{% url 'flight_booking:booking_create' %}">Create a new booking</a>
+    <a href="{% url 'flight_booking:booking_create' %}">
+        <button class="button primary filled" type="button">Create New Booking</button>
+    </a>
+</div>
 {% endblock %}

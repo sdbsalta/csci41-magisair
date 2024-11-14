@@ -1,8 +1,31 @@
 {% extends "base.html" %}
 
-{% block title %}Home - Magis Air{% endblock %}
+{% load static %}
 
+{% block title %}Home - Magis Air{% endblock %}
+{% block styles %}
+<style>
+    body {
+        background-color: var(--tertiary-01);
+        position: relative;
+    }
+
+    #home {
+        padding-left: 2rem;
+        padding-right: 40rem;
+        padding-top: 12rem;
+        text-align: center;
+    }
+
+    #home .header{
+        color: var(--primary-08);
+    }
+
+</style>
+{% endblock %}
 {% block content %}
-<h2>Welcome to Magis Air</h2>
-<p>Select from the menu to view different sections of the site.</p>
+<div id="home">
+    <h1 class="header">Fly the Eagle way</h1> <!-- Not sure if this should be header because it should be in the left side -->
+    <h1 class="header">with Magis Air</h1> 
+</div>
 {% endblock %}
