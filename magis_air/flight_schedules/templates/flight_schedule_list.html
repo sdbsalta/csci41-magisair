@@ -1,17 +1,94 @@
 {% extends "base.html" %}
 
-{% block title %}Flight Schedules{% endblock %}
+{% load static %}
 
+{% block title %}Flight Schedules{% endblock %}
+{% block styles %}
+<style>
+    body {
+        background-color: var(--tertiary-01);
+        position: relative;
+    }
+
+    #sched {
+        padding-left: 5rem;
+        padding-right: 5rem;
+        padding-top: 3.5rem;
+        text-align: center;
+    }
+    #sched .header{
+        color: var(--primary-08);
+    }
+
+    #sched table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: var(--neutral-01);
+        border-radius: 15px;
+    }
+    
+    #sched th, td {
+        padding: 25px;
+        text-align: left;
+        border: none;
+    }
+    
+    #sched th {
+        color: var(--primary-07);
+    }
+    
+    #sched a {
+        text-decoration: none;
+    }
+    
+    #sched a:hover {
+        text-decoration: underline;
+    }
+
+    #sched button {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+
+</style>
+{% endblock %}
 {% block content %}
-    <h2>Flight Schedules</h2>
-    <a href="{% url 'flight_schedules:flight_schedule_create' %}">Add New Schedule</a>
-    <ul>
-        {% for schedule in object_list %}
-            <li>
-                {{ schedule.schedule_id }} - {{ schedule.date }}
-                <a href="{% url 'flight_schedules:flight_schedule_update' schedule.pk %}">Edit</a> |
-                <a href="{% url 'flight_schedules:flight_schedule_delete' schedule.pk %}">Delete</a>
-            </li>
-        {% endfor %}
-    </ul>
+<div id="sched">
+    
+    <h1 class="header">Available Flight Schedules</h1>
+
+    <!-- Table to display crew information -->
+    <table>
+        <thead>
+            <tr>
+                <th>Schedule ID</th>
+                <th>Date</th>
+                <th>Actions</th> <!-- For Edit and Delete links -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for schedule in object_list %}
+                <tr>
+                    <!-- Schedule ID -->
+                    <td>{{ schedule.schedule_id }}</td>
+
+                    <!-- Role -->
+                    <td>{{ schedule.date }}</td>
+                    
+                    <!-- Actions -->
+                    <td>
+                        <a href="{% url 'flight_schedules:flight_schedule_update' schedule.pk %}">Edit</a> |
+                        <a href="{% url 'flight_schedules:flight_schedule_delete' schedule.pk %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'flight_schedules:flight_schedule_create' %}">
+        <button class="button primary filled" type="button">Add New Schedule</button>
+    </a>
+</div>
 {% endblock %}
