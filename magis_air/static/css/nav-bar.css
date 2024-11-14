@@ -11,7 +11,7 @@
 
 /* Logo styling */
 .logo {
-    width: 40px; /* Set your desired width for the logo */
+    width: 40px; 
     height: auto;
 }
 
@@ -21,7 +21,7 @@
     padding: 0;
     margin: 0;
     display: flex;
-    align-items: center; /* Align icons and text */
+    align-items: center;
 }
 
 /* Individual link styling */
@@ -31,7 +31,7 @@
     text-decoration: none;
     margin-right: 1.5rem;
     display: flex;
-    align-items: center; /* Align icon with text */
+    align-items: center; 
 }
 
 .navbar a:hover {
