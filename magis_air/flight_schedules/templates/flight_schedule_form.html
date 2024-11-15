@@ -45,7 +45,7 @@
         {% csrf_token %}
         {{ form.as_p }}
         <fieldset>
-          <legend>Select Crew Members</legend>
+          <legend><strong>Select Crew Members</strong></legend>
           {% for crew in crew_members %}
               <label>
                   <input type="checkbox" name="crew_members" value="{{ crew.crew_id }}"

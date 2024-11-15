@@ -1,13 +1,53 @@
 {% extends "base.html" %}
 
+{% load static %}
+
+{% block styles %}
+<style>
+    body {
+        background-color: var(--tertiary-01);
+        position: relative;
+    }
+
+    #sched {
+        padding-left: 5rem;
+        padding-right: 5rem;
+        padding-top: 3.5rem;
+        text-align: center;
+    }
+    #sched .header{
+        color: var(--primary-08);
+    }
+    
+    #sched a {
+        text-decoration: none;
+    }
+    
+    #sched a:hover {
+        text-decoration: underline;
+    }
+
+    #sched button {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        margin-right: 4px;
+    }
+
+</style>
+{% endblock %}
+
 {% block title %}Delete Flight Schedule{% endblock %}
 
 {% block content %}
-    <h2>Delete Flight Schedule</h2>
-    <p>Are you sure you want to delete {{ object.schedule_id }} - {{ object.date }}?</p>
+<div id="sched"> 
+    <h2 class="header">Are you sure you want to delete this flight schedule?</h2>
+    <p><strong>Schedule ID:</strong> {{ object.schedule_id }} on {{ object.date }}</p>
     <form method="post">
         {% csrf_token %}
-        <button type="submit">Confirm</button>
-        <a href="{% url 'crew_assignments:crew_list' %}">Cancel</a>
+        <button type="submit" class="button primary filled">Confirm Delete</button>
+        <a href="{% url 'flight_schedules:flight_schedule_list' %}">
+            <button class="button tertiary filled" type="button">Cancel</button> 
+        </a>
     </form>
+</div>
 {% endblock %}
