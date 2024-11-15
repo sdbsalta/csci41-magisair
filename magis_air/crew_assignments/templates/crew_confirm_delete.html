@@ -1,13 +1,53 @@
 {% extends "base.html" %}
 
+{% load static %}
+
+{% block styles %}
+<style>
+    body {
+        background-color: var(--tertiary-01);
+        position: relative;
+    }
+
+    #crewmems {
+        padding-left: 5rem;
+        padding-right: 5rem;
+        padding-top: 3.5rem;
+        text-align: center;
+    }
+    #crewmems .header{
+        color: var(--primary-08);
+    }
+    
+    #crewmems a {
+        text-decoration: none;
+    }
+    
+    #crewmems a:hover {
+        text-decoration: underline;
+    }
+
+    #crewmems button {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        margin-right: 4px;
+    }
+
+</style>
+{% endblock %}
+
 {% block title %}Delete Crew Member{% endblock %}
 
 {% block content %}
-    <h2>Delete Crew Member</h2>
-    <p>Are you sure you want to delete {{ object.crew_id }} - {{ object.role }}?</p>
+<div id="crewmems"> 
+    <h2 class="header">Are you sure you want to remove this crew member?</h2>
+    <p><strong>Crew ID:</strong> {{ object.crew_id }} - {{ object.role }} </p>
     <form method="post">
         {% csrf_token %}
-        <button type="submit">Confirm</button>
-        <a href="{% url 'crew_assignments:crew_list' %}">Cancel</a>
+        <button type="submit" class="button primary filled">Confirm Delete</button>
+        <a href="{% url 'crew_assignments:crew_list' %}">
+            <button class="button tertiary filled" type="button">Cancel</button> 
+        </a>
     </form>
+</div>
 {% endblock %}
