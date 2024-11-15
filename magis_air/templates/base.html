@@ -42,8 +42,29 @@
         {% block content %}{% endblock %}
     </main>
     
-    <!--<footer>
-        <p>&copy; 2024 Magis Air</p>
-    </footer>-->
+    <footer class="footer">
+        <div class="footer-column">
+            <img src="{% static 'icons/magis air.svg' %}" alt="Magis Air Logo" class="logo">
+        </div>
+        <div class="footer-column">
+            <h2>Magis Air</h2>
+            <ul>
+                <li><a href="{% url 'home' %}"><img src="{% static 'icons/home.svg' %}" alt="Home Icon" class="icon">Home</a></li>
+                <li><a href="{% url 'crew_assignments:crew_list' %}"><img src="{% static 'icons/user list.svg' %}" alt="Crew Icon" class="icon">Crew Assignments</a></li>
+                <li><a href="{% url 'flight_routes:flight_list' %}"><img src="{% static 'icons/map.svg' %}" alt="Routes Icon" class="icon">Flight Routes</a></li>
+                <li><a href="{% url 'flight_schedules:flight_schedule_list' %}"><img src="{% static 'icons/calendar.svg' %}" alt="Schedules Icon" class="icon">Flight Schedules</a></li>
+                <!--<li><a href="{% url 'flight_booking:booking_list' %}">Bookings</a></li>-->
+            </ul>
+        </div>
+        <div class="footer-column">
+          <h2>Created By</h2>
+          <p>LIBREA, Czyrone</p>
+          <p>MANABAT, Jervie</p>
+          <p>PELAGIO, Maria Rafaela</p>
+          <p>SALTA, Sophia Danielle</p>
+          <p>VERGARA, Veneza Vielle</p>
+        </div>
+      </footer>
+      
 </body>
 </html>
