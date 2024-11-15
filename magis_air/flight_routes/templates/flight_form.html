@@ -62,7 +62,7 @@
     <img id="top-right-svg" src="{% static 'svg/continent.svg' %}" alt="Top Right Continent" />
     <img id="bottom-left-svg" src="{% static 'svg/continent.svg' %}" alt="Bottom Left Continent" />
 
-    <h2 class="header">{% if object %}Update{% else %}Add{% endif %} New Flight</h2>
+    <h2 class="header">{% if object %}Update{% else %}Add New{% endif %} Flight</h2>
     <form method="post">
         {% csrf_token %}
         <p><strong>Flight ID:</strong>
