@@ -9,7 +9,7 @@
 }
 
 /* TODO update hover */
-/* TODO add tertiary + accents buttonts */
+/* TODO add accents buttonts */
 .button.primary.filled {
     --button-enabled-bg-color: var(--primary);
     --button-enabled-border-color: var(--primary);
@@ -26,6 +26,16 @@
     --button-hover-border-color: var(--secondary-07);
     --button-selected-bg-color: var(--secondary-09);
     --button-selected-border-color: var(--secondary-09);
+}
+
+.button.tertiary.filled {
+    color: var(--primary);
+    --button-enabled-bg-color: var(--tertiary-03);
+    --button-enabled-border-color: var(--primary);
+    --button-hover-bg-color: var(--tertiary-07);
+    --button-hover-border-color: var(--tertiary-07);
+    --button-selected-bg-color: var(--tertiary-09);
+    --button-selected-border-color: var(--tertiary-09);
 }
 
 .button.enabled {

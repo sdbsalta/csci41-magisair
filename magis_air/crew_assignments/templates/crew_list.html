@@ -49,6 +49,7 @@
     #crewmems button {
         margin-top: 15px;
         margin-bottom: 15px;
+        margin-right: 4px;
     }
 
 
@@ -83,11 +84,9 @@
                     <!-- Assigned Flight Schedules -->
                     <td>
                         {% if crew.flight_schedules.all %}
-                            <ul>
-                                {% for schedule in crew.flight_schedules.all %}
-                                    <li>{{ schedule.schedule_id }} on {{ schedule.date }}</li>
-                                {% endfor %}
-                            </ul>
+                            {% for schedule in crew.flight_schedules.all %}
+                                <span>{{ schedule.schedule_id }} on {{ schedule.date }}<span><br>
+                            {% endfor %}
                         {% else %}
                             <p>No assigned schedules</p>
                         {% endif %}
@@ -95,8 +94,12 @@
 
                     <!-- Actions -->
                     <td>
-                        <a href="{% url 'crew_assignments:crew_update' crew.pk %}">Edit</a> |
-                        <a href="{% url 'crew_assignments:crew_delete' crew.pk %}">Delete</a>
+                        <a href="{% url 'crew_assignments:crew_update' crew.pk %}">
+                            <button class="button primary filled" type="button">Edit</button>
+                        </a>
+                        <a href="{% url 'crew_assignments:crew_delete' crew.pk %}">
+                            <button class="button tertiary filled" type="button">Delete</button> 
+                        </a>
                     </td>
                 </tr>
             {% endfor %}

@@ -4,6 +4,34 @@
 
 {% block styles %}
 <style>
+    body {
+        background-color: var(--tertiary-01);
+        position: relative;
+    }
+
+    #flightroutes {
+        padding-left: 5rem;
+        padding-right: 5rem;
+        padding-top: 3.5rem;
+        text-align: center;
+    }
+    #flightroutes .header{
+        color: var(--primary-08);
+    }
+    
+    #flightroutes a {
+        text-decoration: none;
+    }
+    
+    #flightroutes a:hover {
+        text-decoration: underline;
+    }
+
+    #flightroutes button {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        margin-right: 4px;
+    }
 
 </style>
 {% endblock %}
@@ -11,7 +39,8 @@
 {% block title %}Flight Form{% endblock %}
 
 {% block content %}
-    <h2>{% if object %}Update{% else %}Add{% endif %} Flight</h2>
+<div id="flightroutes">
+    <h2 class="header">{% if object %}Update{% else %}Add{% endif %} Flight</h2>
     <form method="post">
         {% csrf_token %}
         <p>Flight ID: 
@@ -35,7 +64,10 @@
             </ul>
         {% endif %}
         <p>Departure Time: {{ form.departure_time }}</p>
-        <button type="submit">Save</button>
-        <a href="{% url 'flight_routes:flight_list' %}">Cancel</a>
+        <button type="submit" class="button primary filled" >Save</button>
+        <a href="{% url 'flight_routes:flight_list' %}">
+            <button class="button tertiary filled" type="button">Cancel</button> 
+        </a>
     </form>
+</div>
 {% endblock %}

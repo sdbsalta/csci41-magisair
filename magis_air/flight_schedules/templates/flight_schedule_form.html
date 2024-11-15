@@ -1,9 +1,46 @@
 {% extends "base.html" %}
 
+{% load static %}
+
+{% block styles %}
+<style>
+    body {
+        background-color: var(--tertiary-01);
+        position: relative;
+    }
+
+    #sched {
+        padding-left: 5rem;
+        padding-right: 5rem;
+        padding-top: 3.5rem;
+        text-align: center;
+    }
+    #sched .header{
+        color: var(--primary-08);
+    }
+    
+    #sched a {
+        text-decoration: none;
+    }
+    
+    #sched a:hover {
+        text-decoration: underline;
+    }
+
+    #sched button {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        margin-right: 4px;
+    }
+
+</style>
+{% endblock %}
+
 {% block title %}Flight Schedule Form{% endblock %}
 
 {% block content %}
-    <h2>{% if object %}Update{% else %}Add New{% endif %} Flight Schedule</h2>
+<div id="sched"> 
+  <h2 class="header">{% if object %}Update{% else %}Add New{% endif %} Flight Schedule</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
@@ -17,7 +54,10 @@
               </label><br>
           {% endfor %}
       </fieldset>
-      <button type="submit">Save</button>
-      <a href="{% url 'flight_schedules:flight_schedule_list' %}">Cancel</a>
+      <button type="submit" class="button primary filled" >Save</button>
+      <a href="{% url 'flight_schedules:flight_schedule_list' %}">
+        <button class="button tertiary filled" type="button">Cancel</button> 
+      </a>
     </form>
+</div>
 {% endblock %}

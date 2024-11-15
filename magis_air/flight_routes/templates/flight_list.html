@@ -69,6 +69,7 @@
     #flightroutes button {
         margin-top: 15px;
         margin-bottom: 15px;
+        margin-right: 4px;
     }
     
 </style>
@@ -106,8 +107,12 @@
                     <td>{{ flight.travel_duration_hours }}:{{ flight.travel_duration_minutes }}</td>
                     <td>{{ flight.departure_time }}</td>
                     <td>
-                        <a href="{% url 'flight_routes:flight_update' flight.pk %}">Edit</a> |
-                        <a href="{% url 'flight_routes:flight_delete' flight.pk %}">Delete</a>
+                        <a href="{% url 'flight_routes:flight_update' flight.pk %}">
+                            <button class="button primary filled" type="button">Edit</button>
+                        </a>
+                        <a href="{% url 'flight_routes:flight_delete' flight.pk %}">
+                            <button class="button tertiary filled" type="button">Delete</button> 
+                        </a>
                     </td>
                 </tr>
             {% endfor %}

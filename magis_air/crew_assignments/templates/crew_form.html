@@ -1,13 +1,53 @@
 {% extends "base.html" %}
 
+{% load static %}
+
+{% block styles %}
+<style>
+    body {
+        background-color: var(--tertiary-01);
+        position: relative;
+    }
+
+    #crewmems {
+        padding-left: 5rem;
+        padding-right: 5rem;
+        padding-top: 3.5rem;
+        text-align: center;
+    }
+    #crewmems .header{
+        color: var(--primary-08);
+    }
+    
+    #crewmems a {
+        text-decoration: none;
+    }
+    
+    #crewmems a:hover {
+        text-decoration: underline;
+    }
+
+    #crewmems button {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        margin-right: 4px;
+    }
+
+</style>
+{% endblock %}
+
 {% block title %}Crew Member Form{% endblock %}
 
 {% block content %}
-    <h2>{% if object %}Update{% else %}Add New{% endif %} Crew Member</h2>
+<div id="crewmems"> 
+    <h2 class="header">{% if object %}Update{% else %}Add New{% endif %} Crew Member</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Save</button>
-        <a href="{% url 'crew_assignments:crew_list' %}">Cancel</a>
+        <button type="submit" class="button primary filled" >Save</button>
+        <a href="{% url 'crew_assignments:crew_list' %}">
+            <button class="button tertiary filled" type="button">Cancel</button> 
+        </a>
     </form>
+</div>
 {% endblock %}

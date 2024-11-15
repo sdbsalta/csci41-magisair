@@ -50,6 +50,7 @@
     #sched button {
         margin-top: 15px;
         margin-bottom: 15px;
+        margin-right: 4px;
     }
 
 </style>
@@ -79,8 +80,12 @@
                     
                     <!-- Actions -->
                     <td>
-                        <a href="{% url 'flight_schedules:flight_schedule_update' schedule.pk %}">Edit</a> |
-                        <a href="{% url 'flight_schedules:flight_schedule_delete' schedule.pk %}">Delete</a>
+                        <a href="{% url 'flight_schedules:flight_schedule_update' schedule.pk %}">
+                            <button class="button primary filled" type="button">Edit</button>
+                        </a>
+                        <a href="{% url 'flight_schedules:flight_schedule_delete' schedule.pk %}">
+                            <button class="button tertiary filled" type="button">Delete</button>
+                        </a>
                     </td>
                 </tr>
             {% endfor %}
