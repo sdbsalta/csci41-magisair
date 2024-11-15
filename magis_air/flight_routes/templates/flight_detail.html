@@ -4,6 +4,53 @@
 
 {% block styles %}
 <style>
+    body {
+        background-color: var(--tertiary-01);
+        position: relative;
+    }
+
+    #top-right-svg,
+    #bottom-left-svg {
+        position: absolute;
+        z-index: -1; 
+    }
+
+    #top-right-svg {
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
+
+    #bottom-left-svg {
+        position: fixed;
+        transform: scaleX(-1);
+        bottom: 0;
+        left: 0;
+    }
+
+    #flightroutes {
+        padding-left: 5rem;
+        padding-right: 5rem;
+        padding-top: 3.5rem;
+        text-align: center;
+    }
+    #flightroutes .header{
+        color: var(--primary-08);
+    }
+    
+    #flightroutes a {
+        text-decoration: none;
+    }
+    
+    #flightroutes a:hover {
+        text-decoration: underline;
+    }
+
+    #flightroutes button {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        margin-right: 4px;
+    }
 
 </style>
 {% endblock %}
@@ -11,12 +58,19 @@
 {% block title %}Flight Details{% endblock %}
 
 {% block content %}
-    <h2>Flight Details</h2>
+<div id="flightroutes">
+    <img id="top-right-svg" src="{% static 'svg/continent.svg' %}" alt="Top Right Continent" />
+    <img id="bottom-left-svg" src="{% static 'svg/continent.svg' %}" alt="Bottom Left Continent" />
+
+    <h2 class="header">Flight Details</h2>
     <p><strong>Flight ID:</strong> {{ flight.flight_id }}</p>
     <p><strong>Origin:</strong> {{ flight.origin }}</p>
     <p><strong>Destination:</strong> {{ flight.destination }}</p>
     <p><strong>Travel Duration:</strong> {{ flight.travel_duration_hours }} hours and {{ flight.travel_duration_minutes }} minutes</p>
     <p><strong>Departure Time:</strong> {{ flight.departure_time|date:"H:i" }} </p>
     <p><strong>Arrival Time:</strong> {{ flight.arrival_time }}</p>
-    <a href="{% url 'flight_routes:flight_list' %}">Back to Flight List</a>
+    <a href="{% url 'flight_routes:flight_list' %}">
+        <button class="button primary filled" type="button">Back to Flight List</button> 
+    </a>
+</div>
 {% endblock %}

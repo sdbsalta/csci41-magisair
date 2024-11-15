@@ -10,6 +10,25 @@
         position: relative;
     }
 
+    #top-right-svg,
+    #bottom-left-svg {
+        position: absolute;
+        z-index: -1; 
+    }
+
+    #top-right-svg {
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
+
+    #bottom-left-svg {
+        position: fixed;
+        transform: scaleX(-1);
+        bottom: 0;
+        left: 0;
+    }
+
     #sched {
         padding-left: 5rem;
         padding-right: 5rem;
@@ -57,7 +76,8 @@
 {% endblock %}
 {% block content %}
 <div id="sched">
-    
+    <img id="top-right-svg" src="{% static 'svg/continent.svg' %}" alt="Top Right Continent" />
+    <img id="bottom-left-svg" src="{% static 'svg/continent.svg' %}" alt="Bottom Left Continent" />
     <h1 class="header">Available Flight Schedules</h1>
 
     <!-- Table to display crew information -->

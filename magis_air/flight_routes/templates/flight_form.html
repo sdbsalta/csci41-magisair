@@ -9,6 +9,25 @@
         position: relative;
     }
 
+    #top-right-svg,
+    #bottom-left-svg {
+        position: absolute;
+        z-index: -1; 
+    }
+
+    #top-right-svg {
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
+
+    #bottom-left-svg {
+        position: fixed;
+        transform: scaleX(-1);
+        bottom: 0;
+        left: 0;
+    }
+
     #flightroutes {
         padding-left: 5rem;
         padding-right: 5rem;
@@ -40,14 +59,17 @@
 
 {% block content %}
 <div id="flightroutes">
-    <h2 class="header">{% if object %}Update{% else %}Add{% endif %} Flight</h2>
+    <img id="top-right-svg" src="{% static 'svg/continent.svg' %}" alt="Top Right Continent" />
+    <img id="bottom-left-svg" src="{% static 'svg/continent.svg' %}" alt="Bottom Left Continent" />
+
+    <h2 class="header">{% if object %}Update{% else %}Add{% endif %} New Flight</h2>
     <form method="post">
         {% csrf_token %}
-        <p>Flight ID: 
+        <p><strong>Flight ID:</strong>
             <input type="text" id="id_flight_id" name="flight_id" value="{{ form.flight_id.value }}" readonly class="form-control">
         </p>
-        <p>Origin: {{ form.origin }}</p>
-        <p>Destination: {{ form.destination }}</p>
+        <p><strong>Origin:</strong> {{ form.origin }}</p>
+        <p><strong>Destination:</strong> {{ form.destination }}</p>
         <p><strong>Travel Duration:</strong> {{ form.travel_duration_hours }} hours and {{ form.travel_duration_minutes }} minutes</p>
         {% if form.travel_duration_hours.errors %}
             <ul class="errorlist">
@@ -63,7 +85,7 @@
                 {% endfor %}
             </ul>
         {% endif %}
-        <p>Departure Time: {{ form.departure_time }}</p>
+        <p><strong>Departure Time:</strong> {{ form.departure_time }}</p>
         <button type="submit" class="button primary filled" >Save</button>
         <a href="{% url 'flight_routes:flight_list' %}">
             <button class="button tertiary filled" type="button">Cancel</button> 
