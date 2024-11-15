@@ -13,6 +13,12 @@
     text-align: left;
 }
 
+.footer .footer-column .footer-logo{
+    height: 150px;
+    width: auto;
+    margin-left: 2.5rem;
+}
+
 .footer ul {
     list-style-type: none; 
     padding: 0;
