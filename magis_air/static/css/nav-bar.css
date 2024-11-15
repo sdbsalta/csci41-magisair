@@ -10,7 +10,7 @@
 }
 
 /* Logo styling */
-.logo {
+.navbar-container .logo {
     width: 40px; 
     height: auto;
 }
