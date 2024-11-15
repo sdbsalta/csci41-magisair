@@ -27,7 +27,7 @@
 /* Individual link styling */
 .navbar-container .navbar a {
     color: var(--neutral-01);
-    font-size: var(--subtitle-font-size);
+    font-size: var(--default-font-size);
     text-decoration: none;
     margin-right: 1.5rem;
     display: flex;

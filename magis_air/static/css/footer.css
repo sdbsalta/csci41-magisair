@@ -7,22 +7,34 @@
     color: white;
   }
   
-  .footer-column {
+.footer .footer-column {
     flex: 1; 
     padding: 10px;
   }
   
-  .footer-logo {
+.footer .footer-logo {
     max-width: 200px; 
     height: auto;
   }
   
-  .footer-column h4 {
+.footer .footer-column h4 {
     margin-bottom: 10px;
     font-size: 18px;
   }
   
-  .footer-column p {
+.footer .footer-column p {
     font-size: 14px;
   }
-  
+
+.footer a {
+    color: var(--neutral-01);
+    font-size: var(--default-font-size);
+    text-decoration: none;
+    margin-right: 1.5rem;
+    display: flex;
+    align-items: center; 
+}
+
+.footer ul {
+    list-style-type: none;
+}
