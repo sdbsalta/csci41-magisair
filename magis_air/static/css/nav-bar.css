@@ -16,7 +16,7 @@
 }
 
 /* Navbar styling */
-.navbar ul {
+.navbar-container .navbar ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -25,7 +25,7 @@
 }
 
 /* Individual link styling */
-.navbar a {
+.navbar-container .navbar a {
     color: var(--neutral-01);
     font-size: var(--subtitle-font-size);
     text-decoration: none;
@@ -34,11 +34,11 @@
     align-items: center; 
 }
 
-.navbar a:hover {
+.navbar-container .navbar a:hover {
     color: var(--primary-02);
 }
 
 /* Adjust spacing for list items */
-.navbar li {
+.navbar-container .navbar li {
     margin-right: 1.5rem;
 }
