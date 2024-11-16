@@ -9,28 +9,33 @@
         position: relative;
     }
 
-    #crewmems {
+    .addcrewmems {
         padding-left: 5rem;
         padding-right: 5rem;
         padding-top: 3.5rem;
         text-align: center;
     }
-    #crewmems .header{
+    .addcrewmems .header{
         color: var(--primary-08);
     }
     
-    #crewmems a {
+    .addcrewmems a {
         text-decoration: none;
     }
     
-    #crewmems a:hover {
+    .addcrewmems a:hover {
         text-decoration: underline;
     }
 
-    #crewmems button {
+    .addcrewmems button {
         margin-top: 15px;
         margin-bottom: 15px;
         margin-right: 4px;
+    }
+
+    .addcrewmems input, .addcrewmems select {
+        padding: 10px;
+        margin-top: 5px;
     }
 
 </style>
@@ -39,15 +44,15 @@
 {% block title %}Crew Member Form{% endblock %}
 
 {% block content %}
-<div id="crewmems"> 
+<div class="addcrewmems"> 
     <h2 class="header">{% if object %}Update{% else %}Add New{% endif %} Crew Member</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="button primary filled" >Save</button>
-        <a href="{% url 'crew_assignments:crew_list' %}">
-            <button class="button tertiary filled" type="button">Cancel</button> 
-        </a>
+            <p><strong>Role:</strong> {{ form.role }}</p>
+            <button type="submit" class="button primary filled" >Save</button>
+            <a href="{% url 'crew_assignments:crew_list' %}">
+                <button class="button tertiary filled" type="button">Cancel</button> 
+            </a>
     </form>
 </div>
 {% endblock %}
