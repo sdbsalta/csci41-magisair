@@ -21,14 +21,14 @@ h3 {
 }
 
 html, body {
-    height: 100%; /* Ensures the body and html occupy the full height of the viewport */
+    height: 100%; 
     margin: 0;
     display: flex;
     flex-direction: column;
 }
 
 main {
-    flex: 1; /* Ensures the main content stretches to fill available space */
+    flex: 1; 
 }
 
 body {
