@@ -8,88 +8,137 @@
         background-color: var(--tertiary-01);
         position: relative;
     }
-
-    #top-right-svg,
-    #bottom-left-svg {
-        position: absolute;
-        z-index: -1; 
-    }
-
-    #top-right-svg {
-        position: fixed;
-        top: 0;
-        right: 0;
-    }
-
-    #bottom-left-svg {
-        position: fixed;
-        transform: scaleX(-1);
-        bottom: 0;
-        left: 0;
-    }
-
-    #flightroutes {
-        padding-left: 5rem;
-        padding-right: 5rem;
-        padding-top: 3.5rem;
+    .addflight-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         text-align: center;
+        width: 100%;
+        height: 100vh;
     }
-    #flightroutes .header{
+
+    .addflight-container .flight-column-1 {
+        margin-right: 20px;
+    }
+
+    .addflight {
+        flex: 1;
+        padding-right: 2rem; 
+        padding-left: 2rem;
+        max-width: 50%; 
+    }
+    .addflight .header {
         color: var(--primary-08);
     }
-    
-    #flightroutes a {
+
+    .addflight a {
         text-decoration: none;
     }
-    
-    #flightroutes a:hover {
+
+    .addflight a:hover {
         text-decoration: underline;
     }
 
-    #flightroutes button {
+    .addflight button {
         margin-top: 15px;
         margin-bottom: 15px;
         margin-right: 4px;
     }
 
+    .flight-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        gap: 20px;
+        align-items: center;
+        justify-items: start;
+    }
+
+    .flight-form p {
+        margin: 10px 0;
+    }
+
+    .flight-form p strong {
+        margin-right: 10px;
+    }
+
+    .flight-form input, .flight-form select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+    }
+
+    .travel-duration {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Hours and minutes in columns */
+        gap: 30px;
+    }
+
+    .image-container {
+        flex: 0 0 70%; /* Image container now takes up 70% of the container width */
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .image-container img {
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+    }
+    
 </style>
 {% endblock %}
 
 {% block title %}Flight Form{% endblock %}
 
 {% block content %}
-<div id="flightroutes">
-    <img id="top-right-svg" src="{% static 'svg/continent.svg' %}" alt="Top Right Continent" />
-    <img id="bottom-left-svg" src="{% static 'svg/continent.svg' %}" alt="Bottom Left Continent" />
+<div class="addflight-container">
+    <div class="addflight">
+        <h2 class="header">{% if object %}Update{% else %}Add New{% endif %} Flight</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="flight-form">
+                <div class="flight-column-1">
+                    <p><strong>Flight ID:</strong>
+                        <input type="text" id="id_flight_id" name="flight_id" value="{{ form.flight_id.value }}" readonly class="form-control">
+                    </p>
+                    <p><strong>Origin:</strong> {{ form.origin }}</p>
+                    <p><strong>Destination:</strong> {{ form.destination }}</p>
+                </div>
+                <div class="flight-column-2">
+                    <p><strong>Travel Duration:</strong></p>
+                    <div class="travel-duration">
+                        <p><strong>Hours:</strong> {{ form.travel_duration_hours }}</p>
+                        <p><strong>Minutes:</strong> {{ form.travel_duration_minutes }}</p>
+                    </div>
+                    {% if form.travel_duration_hours.errors %}
+                        <ul class="errorlist">
+                            {% for error in form.travel_duration_hours.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {% if form.travel_duration_minutes.errors %}
+                        <ul class="errorlist">
+                            {% for error in form.travel_duration_minutes.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <p><strong>Departure Time:</strong> {{ form.departure_time }}</p>
+                </div>
+            </div>
+            <button type="submit" class="button primary filled">Save</button>
+            <a href="{% url 'flight_routes:flight_list' %}">
+                <button class="button tertiary filled" type="button">Cancel</button> 
+            </a>
+        </form>
+    </div>
 
-    <h2 class="header">{% if object %}Update{% else %}Add New{% endif %} Flight</h2>
-    <form method="post">
-        {% csrf_token %}
-        <p><strong>Flight ID:</strong>
-            <input type="text" id="id_flight_id" name="flight_id" value="{{ form.flight_id.value }}" readonly class="form-control">
-        </p>
-        <p><strong>Origin:</strong> {{ form.origin }}</p>
-        <p><strong>Destination:</strong> {{ form.destination }}</p>
-        <p><strong>Travel Duration:</strong> {{ form.travel_duration_hours }} hours and {{ form.travel_duration_minutes }} minutes</p>
-        {% if form.travel_duration_hours.errors %}
-            <ul class="errorlist">
-                {% for error in form.travel_duration_hours.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        {% if form.travel_duration_minutes.errors %}
-            <ul class="errorlist">
-                {% for error in form.travel_duration_minutes.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        <p><strong>Departure Time:</strong> {{ form.departure_time }}</p>
-        <button type="submit" class="button primary filled" >Save</button>
-        <a href="{% url 'flight_routes:flight_list' %}">
-            <button class="button tertiary filled" type="button">Cancel</button> 
-        </a>
-    </form>
+    <!-- Right side image -->
+    <div class="image-container">
+        <img src="{% static 'img/flight_route_add.png' %}" alt="Flight Image">
+    </div>
 </div>
 {% endblock %}
