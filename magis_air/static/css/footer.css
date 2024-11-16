@@ -7,7 +7,7 @@
     color: white;
   }
   
-  .footer .footer-column {
+.footer .footer-column {
     flex: 1; 
     padding: 10px;
     text-align: left;

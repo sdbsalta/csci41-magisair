@@ -20,11 +20,21 @@ h3 {
     font-size: var(--h3-font-size);
 }
 
+html, body {
+    height: 100%; /* Ensures the body and html occupy the full height of the viewport */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1; /* Ensures the main content stretches to fill available space */
+}
+
 body {
     font-family: "Inter", sans-serif;
     font-weight: 400;
-    background-size:cover;
-
+    background-size: cover;
 }
 
 * {
