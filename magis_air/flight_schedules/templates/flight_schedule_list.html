@@ -14,6 +14,9 @@
     #bottom-left-svg {
         position: absolute;
         z-index: -1; 
+        overflow: hidden;
+        max-width: 100%; /* Ensure they don't exceed their container */
+        height: auto;
     }
 
     #top-right-svg {
@@ -34,6 +37,7 @@
         padding-right: 5rem;
         padding-top: 3.5rem;
         text-align: center;
+        overflow: hidden;
     }
 
     #sched .header{
