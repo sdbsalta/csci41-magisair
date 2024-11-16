@@ -10,6 +10,28 @@
         position: relative;
     }
 
+    #attendant,
+    #captain {
+        position: absolute;
+        z-index: -1; 
+        overflow: hidden;
+        max-width: 100%; 
+        height: auto;
+    }
+
+    #attendant {
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
+
+    #captain {
+        position: fixed;
+        transform: scaleX(-1);
+        bottom: 0;
+        left: 0;
+    }
+
     #crewmems {
         padding-left: 5rem;
         padding-right: 5rem;
@@ -57,8 +79,8 @@
 {% endblock %}
 {% block content %}
 <div id="crewmems">
-    <!-- <img id="left-svg" src="{% static 'icons/user.svg' %}" alt="Left Crew" /> No svg file yet -->
-    <!-- <img id="right-svg" src="{% static 'icons/user.svg' %}" alt="Right Crew" /> No svg file yet -->
+    <img id="attendant" src="{% static 'img/flight attendant.png' %}" alt="Top Right Attendant" />
+    <img id="captain" src="{% static 'img/captain.png' %}" alt="Bottom Left Captain" />
 
     <h1 class="header">Current Crew Members</h1>
 
