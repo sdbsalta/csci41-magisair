@@ -10,22 +10,57 @@
         position: relative;
     }
 
-    #home {
-        padding-left: 2rem;
-        padding-right: 40rem;
-        padding-top: 12rem;
+    .home {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         text-align: center;
+        width: 100%;
+        height: 100%;
     }
 
-    #home .header{
-        color: var(--primary-08);
+    .hometxt {
+        flex: 1;
+        padding-left: 6rem;
+        padding-bottom: 8rem;
+        max-width: 60%; 
+        margin-left: 40px;
+        text-align: left;
     }
 
+    .hometxt .header {
+        color: var(--primary);
+        line-height: 1.2; 
+    }
+
+    .hometxt .header + .header {
+        margin-top: 1px; 
+    }
+
+
+    .image-container {
+        flex: 0 0 auto; 
+        display: flex;
+    }
+
+    .image-container img {
+        height: auto;
+        width: auto;
+        object-fit: cover;
+    }
 </style>
 {% endblock %}
 {% block content %}
-<div id="home">
-    <h1 class="header">Fly the Eagle way</h1> <!-- Not sure if this should be header because it should be in the left side -->
-    <h1 class="header">with Magis Air</h1> 
+<div class="home">
+    <div class ="hometxt">
+        <h1 class="header">Fly the Eagle way</h1> <!-- Not sure if this should be header because it should be in the left side -->
+        <h1 class="header">with Magis Air</h1>
+        <a href="{% url 'flight_schedules:flight_schedule_list' %}">
+            <button class="button primary filled" type="button">CHECK FLIGHT SCHEDULES</button> 
+        </a>
+    </div>
+    <div class="image-container">
+        <img src="{% static 'img/home_img.png' %}" alt="Home Image">
+    </div> 
 </div>
 {% endblock %}
