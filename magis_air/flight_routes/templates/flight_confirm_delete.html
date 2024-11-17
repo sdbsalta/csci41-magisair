@@ -9,44 +9,43 @@
         position: relative;
     }
 
-    #top-right-svg,
-    #bottom-left-svg {
+    #delete-flightroutes .top-right-svg, .bottom-left-svg {
         position: absolute;
         z-index: -1; 
     }
 
-    #top-right-svg {
+    #delete-flightroutes .top-right-svg {
         position: fixed;
         top: 0;
         right: 0;
     }
 
-    #bottom-left-svg {
+    #delete-flightroutes .bottom-left-svg {
         position: fixed;
         transform: scaleX(-1);
         bottom: 0;
         left: 0;
     }
 
-    #flightroutes {
+    #delete-flightroutes {
         padding-left: 5rem;
         padding-right: 5rem;
         padding-top: 3.5rem;
         text-align: center;
     }
-    #flightroutes .header{
+    #delete-flightroutes .header{
         color: var(--primary-08);
     }
     
-    #flightroutes a {
+    #delete-flightroutes a {
         text-decoration: none;
     }
     
-    #flightroutes a:hover {
+    #delete-flightroutes a:hover {
         text-decoration: underline;
     }
 
-    #flightroutes button {
+    #delete-flightroutes button {
         margin-top: 15px;
         margin-bottom: 15px;
         margin-right: 4px;
@@ -58,9 +57,9 @@
 {% block title %}Confirm Deletion{% endblock %}
 
 {% block content %}
-<div id="flightroutes">
-    <img id="top-right-svg" src="{% static 'svg/continent.svg' %}" alt="Top Right Continent" />
-    <img id="bottom-left-svg" src="{% static 'svg/continent.svg' %}" alt="Bottom Left Continent" />
+<div id="delete-flightroutes">
+    <img class="top-right-svg" src="{% static 'svg/continent.svg' %}" alt="Top Right Continent" />
+    <img class="bottom-left-svg" src="{% static 'svg/continent.svg' %}" alt="Bottom Left Continent" />
 
     <h2 class="header">Are you sure you want to delete this flight?</h2>
     <p><strong>Flight ID:</strong> {{ object.flight_id }} from {{ object.origin }} to {{ object.destination }}</p>
