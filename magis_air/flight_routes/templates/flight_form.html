@@ -22,7 +22,7 @@
         margin-right: 20px;
     }
 
-    .addflight {
+    .addflight-container .addflight {
         flex: 1;
         max-width: 50%; 
         padding-left: 5rem;
@@ -30,44 +30,48 @@
         text-align: left;
     }
 
-    .addflight .header {
+    .addflight-container .addflight .header {
         color: var(--primary-08);
     }
 
-    .addflight a {
+    .addflight-container .addflight a {
         text-decoration: none;
     }
 
-    .addflight a:hover {
+    .addflight-container .addflight a:hover {
         text-decoration: underline;
     }
 
-    .addflight button {
+    .addflight-container .addflight button {
         margin-top: 15px;
         margin-bottom: 15px;
         margin-right: 4px;
     }
 
-    .flight-form {
+    .addflight-container .flight-form {
         display: grid;
         grid-template-columns: 1fr 1fr; 
         gap: 20px;
-        align-items: center;
+        align-items: start;
         justify-items: start;
     }
 
-    .flight-form p {
+    .addflight-container .flight-form p {
         margin: 10px 0;
     }
 
-    .flight-form p strong {
+    .addflight-container .flight-form p strong {
         margin-right: 10px;
     }
 
-    .flight-form input, .flight-form select {
+    .addflight-container .flight-form input, .flight-form select {
         width: 100%;
         padding: 10px;
         margin-top: 5px;
+    }
+
+    .addflight-container .travel-duration-container {
+        margin-bottom: 0px;
     }
 
     .travel-duration {
@@ -109,10 +113,12 @@
                     <p><strong>Destination:</strong> {{ form.destination }}</p>
                 </div>
                 <div class="flight-column-2">
-                    <p><strong>Travel Duration:</strong></p>
-                    <div class="travel-duration">
-                        <p><strong>Hours:</strong> {{ form.travel_duration_hours }}</p>
-                        <p><strong>Minutes:</strong> {{ form.travel_duration_minutes }}</p>
+                    <div class="travel-duration-container">
+                        <p><strong>Travel Duration:</strong></p>
+                        <div class="travel-duration">
+                            <p><strong>Hours:</strong> {{ form.travel_duration_hours }}</p>
+                            <p><strong>Minutes:</strong> {{ form.travel_duration_minutes }}</p>
+                        </div>
                     </div>
                     {% if form.travel_duration_hours.errors %}
                         <ul class="errorlist">
