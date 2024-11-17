@@ -16,12 +16,10 @@
         text-align: center;
         width: 100%;
         height: 100vh;
-        padding-left: 5rem;
-        padding-right: 5rem;
     }
     
     .addsched .image-container {
-        flex: 0 0 60%; /* Image container takes up 60% of the width */
+        flex: 0 0 60%; 
         height: 100vh;
         display: flex;
         justify-content: right;
@@ -35,12 +33,15 @@
     
     .addsched .addflight {
         flex: 1;
-        max-width: 40%; /* Form section takes up 40% of the width */
+        max-width: 40%;
         text-align: left;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
     }
     
     .addsched .addflight .header {
         color: var(--primary-08);
+        margin-bottom: 20px;
     }
     
     .addsched .addflight a {
@@ -99,31 +100,33 @@
     <div class="image-container">
         <img src="{% static 'img/flight_route_add.png' %}" alt="Flight Image">
     </div>
-    <h2 class="header">{% if object %}Update{% else %}Add New{% endif %} Flight Schedule</h2>
-    <form method="post">
-        {% csrf_token %}
+    <div class="addflight">
+        <h2 class="header">{% if object %}Update{% else %}Add New{% endif %} Flight Schedule</h2>
         <div class="form-container">
-            <div class="flight-info">
-                {{ form.as_p }} 
-            </div>
+            <form method="post">
+                {% csrf_token %}
+                <div class="flight-info">
+                    {{ form.as_p }} 
+                </div>
 
-            <div class="crew-members-container">
-                <fieldset>
-                    <legend><strong>Select Crew Members</strong></legend>
-                    {% for crew in crew_members %}
-                        <label>
-                            <input type="checkbox" name="crew_members" value="{{ crew.crew_id }}"
-                                {% if crew in selected_crew_members %}checked{% endif %}>
-                            {{ crew.crew_id }} - {{ crew.role }}
-                        </label><br>
-                    {% endfor %}
-                </fieldset>
-            </div>
+                <div class="crew-members-container">
+                    <fieldset>
+                        <legend><strong>Select Crew Members</strong></legend>
+                        {% for crew in crew_members %}
+                            <label>
+                                <input type="checkbox" name="crew_members" value="{{ crew.crew_id }}"
+                                    {% if crew in selected_crew_members %}checked{% endif %}>
+                                {{ crew.crew_id }} - {{ crew.role }}
+                            </label><br>
+                        {% endfor %}
+                    </fieldset>
+                </div>
+                <button type="submit" class="button primary filled">Save</button>
+                <a href="{% url 'flight_schedules:flight_schedule_list' %}">
+                    <button class="button tertiary filled" type="button">Cancel</button> 
+                </a>
+            </form>
         </div>
-        <button type="submit" class="button primary filled">Save</button>
-        <a href="{% url 'flight_schedules:flight_schedule_list' %}">
-            <button class="button tertiary filled" type="button">Cancel</button> 
-        </a>
-    </form>
+    </div>
 </div>
 {% endblock %}
