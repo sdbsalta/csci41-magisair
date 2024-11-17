@@ -12,17 +12,19 @@
     #delete-flightroutes .top-right-svg, .bottom-left-svg {
         position: absolute;
         z-index: -1; 
+        max-width: 100%; 
+        max-height: 100%;
     }
 
     #delete-flightroutes .top-right-svg {
-        top: 0;
-        right: 0;
+        top: -150px;
+        right: -250px;
     }
 
     #delete-flightroutes .bottom-left-svg {
         transform: scaleX(-1);
-        bottom: 0;
-        left: 0;
+        bottom: -250px;
+        left: -250px;
     }
 
     #delete-flightroutes {
