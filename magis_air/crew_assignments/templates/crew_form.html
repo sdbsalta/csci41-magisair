@@ -6,31 +6,58 @@
 <style>
     body {
         background-color: var(--tertiary-01);
-        position: relative;
     }
 
     .addcrewmems {
-        padding-left: 5rem;
-        padding-right: 5rem;
-        padding-top: 3.5rem;
-        text-align: center;
+        display: flex;
+        align-items: center;
+        height: 100vh;
+        max-width: 100vh;
+        justify-content: flex-start;
     }
-    .addcrewmems .header{
-        color: var(--primary-08);
+
+    .addcrewmems .image-container {
+        flex: 0 0 60%; 
+        height: 100vh;
+        display: flex;
+        justify-content: left;
     }
     
-    .addcrewmems a {
+    .addcrewmems .image-container img {
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+    }
+
+    .addcrewmems .addmems {
+        text-align: left;
+        padding-left: 5.5rem;
+        min-width: 500px; 
+        width: auto; 
+        overflow-wrap: break-word; 
+    }
+
+    .addcrewmems .addmems .header{
+        color: var(--primary-08);
+        margin-bottom: 10px;
+    }
+    
+    .addcrewmems .addmems a {
         text-decoration: none;
     }
     
-    .addcrewmems a:hover {
+    .addcrewmems .addmems a:hover {
         text-decoration: underline;
     }
 
-    .addcrewmems button {
+    .addcrewmems .addmems button {
         margin-top: 15px;
         margin-bottom: 15px;
         margin-right: 4px;
+    }
+
+    .addcrewmems .form-container p {
+        text-decoration: none;
     }
 
     .addcrewmems input, .addcrewmems select {
@@ -45,14 +72,21 @@
 
 {% block content %}
 <div class="addcrewmems"> 
-    <h2 class="header">{% if object %}Update{% else %}Add New{% endif %} Crew Member</h2>
-    <form method="post">
-        {% csrf_token %}
-            <p><strong>Role:</strong> {{ form.role }}</p>
-            <button type="submit" class="button primary filled" >Save</button>
-            <a href="{% url 'crew_assignments:crew_list' %}">
-                <button class="button tertiary filled" type="button">Cancel</button> 
-            </a>
-    </form>
+    <div class="image-container">
+        <img src="{% static 'img/crew.png' %}" alt="Flight Image">
+    </div>
+    <div class="addmems">
+        <h2 class="header">{% if object %}Update{% else %}Add New{% endif %} Crew Member</h2>
+        <div class="form-container">
+            <form method="post">
+                {% csrf_token %}
+                    <p><strong>Role:</strong> {{ form.role }}</p>
+                    <button type="submit" class="button primary filled" >Save</button>
+                    <a href="{% url 'crew_assignments:crew_list' %}">
+                        <button class="button tertiary filled" type="button">Cancel</button> 
+                    </a>
+            </form>
+        </div> 
+    </div>
 </div>
 {% endblock %}

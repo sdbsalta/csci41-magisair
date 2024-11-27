@@ -6,106 +6,143 @@
 <style>
     body {
         background-color: var(--tertiary-01);
+        position: relative;
     }
     
-    .addsched {
+    .addsched-container {
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        height: 100vh;
-        max-width: 100vh;
-        justify-content: flex-start;
-    }
-    
-    .addsched .image-container {
-        flex: 0 0 60%; 
+        text-align: center;
+        width: 100%;
         height: 100vh;
     }
     
-    .addsched .image-container img {
+    .addsched-container .form-column {
+        padding-right: 10rem;
+        margin-left: -10rem;
+        flex: 1;
+        max-width: 50%;
+        text-align: left;
+    }
+
+    .addsched-container .header {
+        color: var(--primary-08);
+    }
+
+    .addsched-container .form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .addsched-container .form p {
+        margin: 10px 0;
+    }
+
+    .addsched-container .form p strong {
+        display: inline-block;
+        margin-bottom: 5px;
+    }
+
+    .addsched-container .form input, .form select {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+    }
+
+    .addsched-container .form .flight-row {
+        grid-column: span 2; 
+    }
+
+    .addsched-container .form input[type="text"] {
+        width: 87%; 
+    }
+
+    .addsched-container .crew-members-container {
+        margin-top: 20px;
+    }
+
+    .addsched-container .crew-members-container fieldset {
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+
+    .addsched-container .crew-members-container legend {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .addsched-container .buttons {
+        margin-top: 20px;
+    }
+
+    .addsched-container .buttons button {
+        margin-right: 4px;
+    }
+
+    .image-container {
+        flex: 0 0 60%;
+        height: 100vh;
+        display: flex;
+        justify-content: left;
+    }
+    
+    .image-container img {
         height: 100%;
         width: auto;
         object-fit: cover;
     }
-    
-    .addsched .addflight {
-        text-align: left;
-        padding-left: 5.5rem;
-    }
-
-    
-    .addsched .addflight .header {
-        color: var(--primary-08);
-        margin-bottom: 10px;
-    }
-    
-    .addsched .addflight a {
-        text-decoration: none;
-    }
-    
-    .addsched .addflight a:hover {
-        text-decoration: underline;
-    }
-    
-    .addsched .addflight button {
-        margin-top: 15px;
-        margin-bottom: 15px;
-        margin-right: 4px;
-    }
-
-    .addsched .addflight .flight-info{
-        margin-bottom: 10px;
-    }
-
-    .addsched .form-container p {
-        margin-bottom: 10px 0;
-    }
-    
-    .addsched .travel-duration-container {
-        margin-bottom: 0;
-    }
-    
-    .addsched .travel-duration {
-        display: grid;
-        grid-template-columns: 1fr 1fr; /* Hours and minutes in columns */
-        gap: 30px;
-    }    
 </style>
 {% endblock %}
 
-{% block title %}Flight Schedule Form{% endblock %}
+{% block title %}Schedule Form{% endblock %}
 
 {% block content %}
-<div class="addsched">
+<div class="addsched-container">
     <div class="image-container">
         <img src="{% static 'img/flight_route_add.png' %}" alt="Flight Image">
     </div>
-    <div class="addflight">
+    <div class="form-column">
         <h2 class="header">{% if object %}Update{% else %}Add New{% endif %} Flight Schedule</h2>
-        <div class="form-container">
-            <form method="post">
-                {% csrf_token %}
-                <div class="flight-info">
-                    {{ form.as_p }} 
-                </div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form">
+                {% if object %}
+                <p>
+                    <strong>Schedule ID:</strong>
+                    <input type="text" id="id_schedule_id" name="schedule_id" value="{{ form.schedule_id.value }}">
+                </p>
+                {% endif %}
+                <p>
+                    <strong>Date:</strong> {{ form.date }}
+                </p>
 
-                <div class="crew-members-container">
-                    <fieldset>
-                        <legend><strong>Select Crew Members</strong></legend>
-                        {% for crew in crew_members %}
-                            <label>
-                                <input type="checkbox" name="crew_members" value="{{ crew.crew_id }}"
-                                    {% if crew in selected_crew_members %}checked{% endif %}>
-                                {{ crew.crew_id }} - {{ crew.role }}
-                            </label><br>
-                        {% endfor %}
-                    </fieldset>
+                <div class="flight-row">
+                    <p>
+                        <strong>Flight:</strong> {{ form.flight }}
+                    </p>
                 </div>
+            </div>
+            <div class="crew-members-container">
+                <fieldset>
+                    <legend>Select Crew Members</legend>
+                    {% for crew in crew_members %}
+                        <label>
+                            <input type="checkbox" name="crew_members" value="{{ crew.crew_id }}"
+                                {% if crew in selected_crew_members %}checked{% endif %}>
+                            {{ crew.crew_id }} - {{ crew.role }}
+                        </label><br>
+                    {% endfor %}
+                </fieldset>
+            </div>
+            <div class="buttons">
                 <button type="submit" class="button primary filled">Save</button>
                 <a href="{% url 'flight_schedules:flight_schedule_list' %}">
                     <button class="button tertiary filled" type="button">Cancel</button> 
                 </a>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 </div>
 {% endblock %}

@@ -10,7 +10,7 @@
         position: relative;
     }
 
-    #calendar,
+    #plane,
     #passport {
         position: absolute;
         z-index: -1; 
@@ -19,15 +19,14 @@
         height: auto;
     }
 
-    #calendar {
+    #plane {
         position: fixed;
         top: 0;
-        right: 0;
+        right: -2;
     }
 
     #passport {
         position: fixed;
-        transform: scaleX(-1);
         bottom: 0;
         left: 0;
     }
@@ -80,7 +79,7 @@
 {% endblock %}
 {% block content %}
 <div id="sched">
-    <img id="calendar" src="{% static 'img/calendar.png' %}" alt="Top Right Calendar" />
+    <img id="plane" src="{% static 'img/plane.png' %}" alt="Top Right Plane" />
     <img id="passport" src="{% static 'img/passport.png' %}" alt="Bottom Left Passport" />
     
     <h1 class="header">Available Flight Schedules</h1>

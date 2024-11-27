@@ -9,7 +9,7 @@
         position: relative;
     }
 
-    #calendar,
+    #plane,
     #passport {
         position: absolute;
         z-index: -1; 
@@ -18,16 +18,16 @@
         height: auto;
     }
 
-    #calendar {
+    #plane {
         position: fixed;
         top: 0;
+        left: 2;
         right: 0;
     }
 
     #passport {
         position: fixed;
-        transform: scaleX(-1);
-        bottom: 0;
+        bottom: 2;
         left: 0;
     }
 
@@ -71,8 +71,9 @@
 
 {% block content %}
 <div id="delete-sched"> 
-    <img id="calendar" src="{% static 'img/calendar.png' %}" alt="Top Right Calendar" />
+    <img id="plane" src="{% static 'img/plane.png' %}" alt="Top Right Plane" />
     <img id="passport" src="{% static 'img/passport.png' %}" alt="Bottom Left Passport" />
+    
     <div class="text-container">
         <h2 class="header">Are you sure you want to delete this flight schedule?</h2>
         <p><strong>Schedule ID:</strong> {{ object.schedule_id }} on {{ object.date }}</p>

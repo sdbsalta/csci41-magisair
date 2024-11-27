@@ -9,26 +9,14 @@
         position: relative;
     }
 
-    #attendant,
-    #captain {
-        position: absolute;
-        z-index: -1; 
-        overflow: hidden;
-        max-width: 100%; 
-        height: auto;
-    }
-
-    #attendant {
-        position: fixed;
-        top: 0;
-        right: 0;
-    }
-
-    #captain {
-        position: fixed;
-        transform: scaleX(-1);
-        bottom: 0;
-        left: 0;
+    #building {
+    position: absolute;
+    z-index: -1; 
+    bottom: 40; 
+    left: 0; 
+    width: 100vw; 
+    height: 60vh; 
+    object-fit: cover; 
     }
 
     #delete-crewmems {
@@ -71,9 +59,8 @@
 
 {% block content %}
 <div id="delete-crewmems"> 
-    <img id="attendant" src="{% static 'img/flight attendant.png' %}" alt="Top Right Attendant" />
-    <img id="captain" src="{% static 'img/captain.png' %}" alt="Bottom Left Captain" />
-    
+    <img id="building" src="{% static 'img/buildings.png' %}" alt="Background Building" /> 
+
     <div class="text-container">
         <h2 class="header">Are you sure you want to remove this crew member?</h2>
         <p><strong>Crew ID:</strong> {{ object.crew_id }} - {{ object.role }} </p>
