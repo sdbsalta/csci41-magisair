@@ -63,7 +63,7 @@
 
     <div class="text-container">
         <h2 class="header">Are you sure you want to remove this crew member?</h2>
-        <p><strong>Crew ID:</strong> {{ object.crew_id }} - {{ object.role }} </p>
+        <p><strong>Crew ID:</strong> {{ object.crew_id }} - {{ object.first_name }} {{ object.last_name }} - {{ object.role }} </p>
         <form method="post">
             {% csrf_token %}
             <button type="submit" class="button primary filled">Confirm Delete</button>

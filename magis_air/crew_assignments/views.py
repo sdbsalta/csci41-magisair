@@ -17,13 +17,13 @@ class CrewMemberListView(ListView):
 
 class CrewMemberCreateView(CreateView):
     model = CrewMember
-    fields = ['role']
+    fields = ['first_name', 'last_name', 'role']
     template_name = 'crew_form.html'
     success_url = reverse_lazy('crew_assignments:crew_list')
 
 class CrewMemberUpdateView(UpdateView):
     model = CrewMember
-    fields = ['role']
+    fields = ['first_name', 'last_name', 'role']
     template_name = 'crew_form.html'
     success_url = reverse_lazy('crew_assignments:crew_list')
 

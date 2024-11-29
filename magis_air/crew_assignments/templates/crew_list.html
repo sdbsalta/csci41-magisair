@@ -76,6 +76,7 @@
         <thead>
             <tr>
                 <th>Crew ID</th>
+                <th>Name</th>
                 <th>Role</th>
                 <th>Assigned Flight Schedules</th>
                 <th>Actions</th> <!-- For Edit and Delete links -->
@@ -86,6 +87,9 @@
                 <tr>
                     <!-- Crew ID -->
                     <td>{{ crew.crew_id }}</td>
+
+                    <!-- Crew Name -->
+                    <td>{{ crew.first_name }} {{ crew.last_name }}</td>
                     
                     <!-- Role -->
                     <td>{{ crew.role }}</td>

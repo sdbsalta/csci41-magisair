@@ -80,6 +80,8 @@
         <div class="form-container">
             <form method="post">
                 {% csrf_token %}
+                    <p><strong>First Name:</strong> {{ form.first_name }}</p>
+                    <p><strong>Last Name:</strong> {{ form.last_name }}</p>
                     <p><strong>Role:</strong> {{ form.role }}</p>
                     <button type="submit" class="button primary filled" >Save</button>
                     <a href="{% url 'crew_assignments:crew_list' %}">

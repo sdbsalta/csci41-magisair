@@ -131,7 +131,7 @@
                         <label>
                             <input type="checkbox" name="crew_members" value="{{ crew.crew_id }}"
                                 {% if crew in selected_crew_members %}checked{% endif %}>
-                            {{ crew.crew_id }} - {{ crew.role }}
+                            {{ crew.crew_id }} - {{ crew.first_name }} {{ crew.last_name }} - {{ crew.role }}
                         </label><br>
                     {% endfor %}
                 </fieldset>
