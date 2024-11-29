@@ -1,7 +1,7 @@
 from django.db import models
 from datetime import datetime
 from django.core.exceptions import ValidationError
-
+# test
 class CrewMember(models.Model):
     CAPTAIN = 'Captain'
     FIRST_OFFICER = 'First Officer'
