@@ -79,12 +79,24 @@
 {% endblock %}
 {% block content %}
 <div id="sched">
-    <img id="plane" src="{% static 'img/plane.png' %}" alt="Top Right Plane" />
-    <img id="passport" src="{% static 'img/passport.png' %}" alt="Bottom Left Passport" />
-    
     <h1 class="header">Available Flight Schedules</h1>
 
-    <!-- Table to display crew information -->
+    <!-- Filter Form -->
+    <form method="get">
+        <div class="filter-container">
+            <div>
+                <label for="schedule_id">Schedule ID:</label>
+                <input type="text" id="schedule_id" name="schedule_id" value="{{ request.GET.schedule_id }}">
+            </div>
+            <div>
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" value="{{ request.GET.date }}">
+            </div>
+            <button type="submit">Filter</button>
+        </div>
+    </form>
+
+    <!-- Table to display flight schedules -->
     <table>
         <thead>
             <tr>
@@ -94,15 +106,10 @@
             </tr>
         </thead>
         <tbody>
-            {% for schedule in object_list %}
+            {% for schedule in flight_schedules %}
                 <tr>
-                    <!-- Schedule ID -->
                     <td>{{ schedule.schedule_id }}</td>
-
-                    <!-- Role -->
                     <td>{{ schedule.date }}</td>
-                    
-                    <!-- Actions -->
                     <td>
                         <a href="{% url 'flight_schedules:flight_schedule_update' schedule.pk %}">
                             <button class="button primary filled" type="button">Edit</button>

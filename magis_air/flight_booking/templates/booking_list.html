@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}Booking List{% endblock %}
+
 {% block styles %}
 <style>
     body {
@@ -32,20 +33,61 @@
         margin-bottom: 15px;
     }
 
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 2rem;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        background-color: var(--primary-08);
+        color: white;
+    }
+
+    td {
+        background-color: #f9f9f9;
+    }
+
 </style>
 {% endblock %}
+
 {% block content %}
 <div id="bookings">
     <h1 class="header">Current Bookings</h1>
-    <ul>
-        {% for booking in object_list %}
-            <li>
-                {{ booking.booking_id }} - {{ booking.passenger.name }} - {{ booking.total_cost }} USD
-                <a href="{% url 'flight_booking:booking_update' booking.pk %}">Edit</a>
-                <a href="{% url 'flight_booking:booking_delete' booking.pk %}">Delete</a>
-            </li>
-        {% endfor %}
-    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Passenger Name</th>
+                <th>Flight</th>
+                <th>Total Cost</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in object_list %}
+                <tr>
+                    <td>{{ booking.booking_id }}</td>
+                    <td>{{ booking.passenger.name }}</td>
+                    <td>{{ booking.flight }}</td>
+                    <td>{{ booking.total_cost }} USD</td>
+                    <td>
+                        <a href="{% url 'flight_booking:booking_update' booking.pk %}">Edit</a>
+                        <a href="{% url 'flight_booking:booking_delete' booking.pk %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     <a href="{% url 'flight_booking:booking_create' %}">
         <button class="button primary filled" type="button">Create New Booking</button>
     </a>
