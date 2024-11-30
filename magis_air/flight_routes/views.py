@@ -1,7 +1,21 @@
+from django import forms
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.urls import reverse_lazy
 from .models import Flight, generate_flight_id
+
+
+class FlightSearchForm(forms.Form):
+    origin = forms.ChoiceField(
+        choices=[('Manila, Philippines', 'Manila, Philippines'), ('Tokyo, Japan', 'Tokyo, Japan')],
+        required=False,
+        label="Select Origin"
+    )
+    destination = forms.ChoiceField(
+        choices=[('Manila, Philippines', 'Manila, Philippines'), ('Tokyo, Japan', 'Tokyo, Japan')],
+        required=False,
+        label="Select Destination"
+    )
 
 class FlightListView(ListView):
     model = Flight
@@ -10,26 +24,23 @@ class FlightListView(ListView):
 
     def get_queryset(self):
         origin_filter = self.request.GET.get('origin')
-        print("Filtering by origin:", origin_filter)  # Debugging line
-        if origin_filter:
-            return Flight.objects.filter(origin=origin_filter)
-        return Flight.objects.all()
+        destination_filter = self.request.GET.get('destination')
 
-    
+        queryset = Flight.objects.all()
+
+        # Apply filters if they exist
+        if origin_filter:
+            queryset = queryset.filter(origin=origin_filter)
+
+        if destination_filter:
+            queryset = queryset.filter(destination=destination_filter)
+
+        return queryset
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['form'] = self.get_form()
+        context['form'] = FlightSearchForm(self.request.GET)
         return context
-
-    def get_form(self):
-        from django import forms
-        class FlightSearchForm(forms.Form):
-            origin = forms.ChoiceField(
-                choices=[('Manila, Philippines', 'Manila, Philippines'), ('Tokyo, Japan', 'Tokyo, Japan')],
-                required=False,
-                label="Select Origin"
-            )
-        return FlightSearchForm(self.request.GET)
 
 class FlightCreateView(CreateView):
     model = Flight
