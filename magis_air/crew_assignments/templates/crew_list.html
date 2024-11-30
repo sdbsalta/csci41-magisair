@@ -92,12 +92,20 @@
     }
 
     .crew-form button:hover {
-        background-color: var(--primary-07); /* Slightly darker shade on hover */
+        background-color: var(--primary-07);
     }
 
     .spacer {
         border-left: 2px solid var(--secondary-10);
-        height: 30px; /* Matches input box height */
+        height: 30px; 
+    }
+
+    #crewmems .upcoming {
+        color: red;
+    }
+
+    #crewmems .completed {
+        color: green;
     }
 
 </style>
@@ -159,7 +167,7 @@
                         {% if crew.flight_schedules.all %}
                             {% with crew.flight_schedules.all|dictsortreversed:"date" as sorted_schedules %}
                                 {% for schedule in sorted_schedules %}
-                                    <span>
+                                    <span class="{% if schedule.date|date:'Y-m-d' > current_date|date:'Y-m-d' %}upcoming{% elif schedule.date|date:'Y-m-d' == current_date|date:'Y-m-d' %}current{% else %}completed{% endif %}">
                                         {% if schedule.date|date:"Y-m-d" > current_date|date:"Y-m-d" %}
                                             [Upcoming]
                                         {% elif schedule.date|date:"Y-m-d" == current_date|date:"Y-m-d" %}
