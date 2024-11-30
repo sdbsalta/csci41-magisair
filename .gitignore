@@ -5,7 +5,9 @@ myenv/
 .env
 
 db.sqlite3
-.DS_Stxore
+.DS_Store
+/.DS_Store
+.DS_Store/
 
 **/__pycache__/
 *.pyc
@@ -14,3 +16,4 @@ magis_air/__pycache__/
 
 myenv/
 venv/
+
