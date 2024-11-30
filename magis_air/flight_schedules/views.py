@@ -7,6 +7,22 @@ from .models import FlightSchedule, CrewMember
 class FlightScheduleListView(ListView):
     model = FlightSchedule
     template_name = 'flight_schedule_list.html'
+    context_object_name = 'flight_schedules'  # This is to use 'flight_schedules' in the template context
+
+    def get_queryset(self):
+        queryset = FlightSchedule.objects.all()
+
+        # Filtering by schedule_id
+        schedule_id = self.request.GET.get('schedule_id')
+        if schedule_id:
+            queryset = queryset.filter(schedule_id__icontains=schedule_id)
+
+        # Filtering by date
+        date = self.request.GET.get('date')
+        if date:
+            queryset = queryset.filter(date=date)
+
+        return queryset
 
 class FlightScheduleCreateView(CreateView):
     model = FlightSchedule
