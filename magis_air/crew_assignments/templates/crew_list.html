@@ -60,8 +60,42 @@
         margin-top: 15px;
         margin-bottom: 15px;
         margin-right: 4px;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
     }
 
+    .crew-form {
+        display: flex;
+        justify-content: center; /* Centers all items horizontally */
+        align-items: center; /* Aligns items vertically in the same row */
+        gap: 1rem; /* Space between each element */
+        margin-top: 2rem; /* Add space above the form */
+    }
+
+    .crew-form .form-group {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem; /* Space between label and input */
+    }
+
+    .crew-form input,
+    .crew-form select {
+        width: 150px; /* Adjust the width of the input fields */
+        padding: 0.5rem;
+        border: 1px solid var(--neutral-02);
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .crew-form button:hover {
+        background-color: var(--primary-07); /* Slightly darker shade on hover */
+    }
+
+    .spacer {
+        border-left: 2px solid var(--secondary-10);
+        height: 30px; /* Matches input box height */
+    }
 
 </style>
 {% endblock %}
@@ -72,9 +106,25 @@
     <h1 class="header">Current Crew Members</h1>
     <form method="GET" action="{% url 'crew_assignments:crew_list' %}">
         {% csrf_token %}
-        {{ crew_id_form.as_p }}
-        {{ crew_role_form.as_p }} 
-        <input type="submit" value="Search">
+        <div class="crew-form">
+            <!-- Crew ID Input -->
+            <div class="form-group">
+                <label for="crew-id"><strong>Crew ID:</strong></label>
+                {{ crew_id_form.crew_ID }}
+            </div>
+    
+            <!-- Spacer -->
+            <div class="spacer"></div>
+    
+            <!-- Crew Role Dropdown -->
+            <div class="form-group">
+                <label for="crew-role"><strong>Crew Role:</strong></label>
+                {{ crew_role_form.role }}
+            </div>
+    
+            <!-- Search Button -->
+            <button type="submit" class="button primary filled">Search</button>
+        </div>
     </form>
 
     <!-- Table to display crew information -->

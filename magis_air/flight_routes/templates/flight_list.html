@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% load static %}
 
 {% block title %}Flights{% endblock %}
@@ -36,7 +35,8 @@
         text-align: center;
         overflow: hidden;
     }
-    #flightroutes .header{
+
+    #flightroutes .header {
         color: var(--primary-08);
     }
 
@@ -47,21 +47,21 @@
         background-color: var(--neutral-01);
         border-radius: 15px;
     }
-    
+
     #flightroutes th, td {
         padding: 25px;
         text-align: left;
         border: none;
     }
-    
+
     #flightroutes th {
         color: var(--primary-07);
     }
-    
+
     #flightroutes a {
         text-decoration: none;
     }
-    
+
     #flightroutes a:hover {
         text-decoration: underline;
     }
@@ -70,8 +70,36 @@
         margin-top: 15px;
         margin-bottom: 15px;
         margin-right: 5px;
+        border: none;
+        border-radius: 5px;
     }
-    
+
+    .search-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .search-form input,
+    .search-form select {
+        padding: 0.5rem;
+        width: 150px;
+        border-radius: 5px;
+        border: 1px solid var(--neutral-02);
+        text-align: center;
+    }
+
+    .search-form button:hover {
+        background-color: var(--primary-07); /* Slightly darker shade on hover */
+    }
+
+    .spacer {
+        border-left: 2px solid var(--secondary-10);
+        height: 30px; /* Matches input box height */
+    }
+
 </style>
 {% endblock %}
 
@@ -80,16 +108,31 @@
     <img class="top-right-svg" src="{% static 'svg/continent.svg' %}" alt="Top Right Continent" />
     <img class="bottom-left-svg" src="{% static 'svg/continent.svg' %}" alt="Bottom Left Continent" />
     
-    <h1 class="header">Available Flight Routes</h2>
+    <h1 class="header">Available Flight Routes</h1>
 
-    <form method="GET" action="{% url 'flight_routes:flight_list' %}">
+    <form method="GET" action="{% url 'flight_routes:flight_list' %}" class="search-form">
         {% csrf_token %}
-        {{ form.as_p }} 
-        <input type="submit" value="Search">
+        <!-- Origin Dropdown -->
+        <div class="form-group">
+            <label for="origin"><strong>Select Origin:</strong></label>
+            {{ form.origin }}
+        </div>
+
+        <!-- Spacer -->
+        <div class="spacer"></div>
+        
+        <!-- Destination Dropdown -->
+        <div class="form-group">
+            <label for="destination"><strong>Select Destination:</strong></label>
+            {{ form.destination }}
+        </div>
+
+        <!-- Search Button -->
+        <button type="submit" class="button primary filled">Search</button>
     </form>
-    
-     <!-- Table to display flight information -->
-     <table>
+
+    <!-- Table to display flight information -->
+    <table>
         <thead>
             <tr>
                 <th>Flight ID</th>
@@ -130,6 +173,5 @@
     <a href="{% url 'flight_routes:flight_create' %}">
         <button class="button primary filled" type="button">Add New Flight</button>
     </a>
-    
 </div>
 {% endblock %}
