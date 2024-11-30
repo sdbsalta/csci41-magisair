@@ -148,7 +148,7 @@
                 <th>Name</th>
                 <th>Birth Date</th>
                 <th>Gender</th>
-                <!-- <th>Actions</th> -->
+                <th>Actions</th> <!-- Added for the Delete column -->
             </tr>
         </thead>
         <tbody>
@@ -158,10 +158,14 @@
                     <td>{{ passenger.name }}</td>
                     <td>{{ passenger.birth_date }}</td>
                     <td>{{ passenger.get_gender_display }}</td>
+                    <td>
+                        <a href="{% url 'flight_booking:passenger_delete' passenger.pk %}">Delete</a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
+    
 
     <a href="{% url 'flight_booking:passenger_create' %}">
         <button class="button primary filled" type="button">Add New Passenger</button>

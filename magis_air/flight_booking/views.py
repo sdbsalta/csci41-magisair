@@ -125,3 +125,7 @@ class BookingDeleteView(DeleteView):
     template_name = 'booking_confirm_delete.html'
     success_url = reverse_lazy('flight_booking:booking_list')  
 
+class PassengerDeleteView(DeleteView):
+    model = Passenger
+    template_name = 'passenger_confirm_delete.html'
+    success_url = reverse_lazy('flight_booking:passenger_list')
