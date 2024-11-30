@@ -22,7 +22,6 @@ class FlightListView(ListView):
         return context
 
     def get_form(self):
-        # Create and return the form for filtering flights
         from django import forms
         class FlightSearchForm(forms.Form):
             origin = forms.ChoiceField(
