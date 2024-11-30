@@ -37,7 +37,7 @@ class Booking(models.Model):
     booking_date = models.DateField(auto_now_add=True)
     passenger = models.ForeignKey('Passenger', on_delete=models.CASCADE, related_name="bookings")
     flight = models.ForeignKey('flight_routes.Flight', on_delete=models.CASCADE, related_name="bookings")
-    additional_items = models.ManyToManyField('AdditionalItem', blank=True)
+    additional_items = models.CharField('Additional Item', max_length=255, blank=True)
 
     def generate_random_sequence(self):
         """Generates a random sequence of 6 uppercase letters."""
