@@ -56,6 +56,57 @@
     border-color: var(--button-selected-border-color);
 }
 
+.button.primary.outlined {
+    --button-enabled-border-color: var(--primary);
+    color: var(--primary);
+    background: var(--primary-01);
+    border: 2px solid var(--primary); 
+}
+
+.button.primary.outlined:hover {
+    background: var(--primary-03); 
+    border-color: var(--primary-07); 
+}
+
+.button.primary.outlined.selected {
+    background: var(--primary-09); 
+    border-color: var(--primary-09);
+}
+
+.button.secondary.outlined {
+    --button-enabled-border-color: var(--secondary);
+    color: var(--secondary);
+    background: var(--secondary-02);
+    border: 2px solid var(--secondary); 
+}
+
+.button.secondary.outlined:hover {
+    background: var(--secondary-03);
+    border-color: var(--secondary-07);
+}
+
+.button.secondary.outlined.selected {
+    background: var(--secondary-09);
+    border-color: var(--secondary-09);
+}
+
+.button.tertiary.outlined {
+    --button-enabled-border-color: var(--tertiary);
+    color: var(--tertiary);
+    background: transparent;
+    border: 2px solid var(--tertiary); /* Border color */
+}
+
+.button.tertiary.outlined:hover {
+    background: var(--tertiary-07);
+    border-color: var(--tertiary-07);
+}
+
+.button.tertiary.outlined.selected {
+    background: var(--tertiary-09);
+    border-color: var(--tertiary-09);
+}
+
 .button.disabled,
 .button[disabled] {
     color: var(--button-disabled-color);
