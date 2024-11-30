@@ -70,6 +70,12 @@
     <img id="building" src="{% static 'img/buildings.png' %}" alt="Background Building" /> 
 
     <h1 class="header">Current Crew Members</h1>
+    <form method="GET" action="{% url 'crew_assignments:crew_list' %}">
+        {% csrf_token %}
+        {{ crew_id_form.as_p }}
+        {{ crew_role_form.as_p }} 
+        <input type="submit" value="Search">
+    </form>
 
     <!-- Table to display crew information -->
     <table>
@@ -89,7 +95,7 @@
                     <td>{{ crew.crew_id }}</td>
 
                     <!-- Crew Name -->
-                    <td>{{ crew.first_name }} {{ crew.last_name }}</td>
+                    <td>{{ crew.first_name }} {% if crew.middle_name %} {{ crew.middle_name|slice:":1" }}. {% endif %} {{ crew.last_name }}</td>
                     
                     <!-- Role -->
                     <td>{{ crew.role }}</td>
@@ -97,9 +103,20 @@
                     <!-- Assigned Flight Schedules -->
                     <td>
                         {% if crew.flight_schedules.all %}
-                            {% for schedule in crew.flight_schedules.all %}
-                                <span>{{ schedule.schedule_id }} on {{ schedule.date }}<span><br>
-                            {% endfor %}
+                            {% with crew.flight_schedules.all|dictsortreversed:"date" as sorted_schedules %}
+                                {% for schedule in sorted_schedules %}
+                                    <span>
+                                        {% if schedule.date|date:"Y-m-d" > current_date|date:"Y-m-d" %}
+                                            [Upcoming]
+                                        {% elif schedule.date|date:"Y-m-d" == current_date|date:"Y-m-d" %}
+                                            [Current]
+                                        {% else %}
+                                            [Completed]
+                                        {% endif %}
+                                        {{ schedule.schedule_id }} on {{ schedule.date }}
+                                    <span><br>
+                                {% endfor %}
+                            {% endwith %}
                         {% else %}
                             <p>No assigned schedules</p>
                         {% endif %}

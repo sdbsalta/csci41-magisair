@@ -7,12 +7,12 @@ from .models import Flight, generate_flight_id
 
 class FlightSearchForm(forms.Form):
     origin = forms.ChoiceField(
-        choices=[('Manila, Philippines', 'Manila, Philippines'), ('Tokyo, Japan', 'Tokyo, Japan')],
+        choices=[('', '---------')] + [('Manila, Philippines', 'Manila, Philippines'), ('Tokyo, Japan', 'Tokyo, Japan'), ('London, UK', 'London, UK'), ('New York, USA', 'New York, USA')],
         required=False,
         label="Select Origin"
     )
     destination = forms.ChoiceField(
-        choices=[('Manila, Philippines', 'Manila, Philippines'), ('Tokyo, Japan', 'Tokyo, Japan')],
+        choices=[('', '---------')] + [('Manila, Philippines', 'Manila, Philippines'), ('Tokyo, Japan', 'Tokyo, Japan'), ('London, UK', 'London, UK'), ('New York, USA', 'New York, USA')],
         required=False,
         label="Select Destination"
     )

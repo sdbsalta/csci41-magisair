@@ -97,6 +97,7 @@
                 <th>Destination</th>
                 <th>Travel Duration</th>
                 <th>Departure Time</th>
+                <th>Arrival Time</th>
                 <th>Actions</th> <!-- For Edit and Delete links -->
             </tr>
         </thead>
@@ -111,7 +112,8 @@
                     <td>{{ result.origin }}</td>
                     <td>{{ result.destination }}</td>
                     <td>{{ result.travel_duration_hours }} hrs & {{ result.travel_duration_minutes }} mins</td>
-                    <td>{{ result.departure_time }}</td>
+                    <td>{{ result.departure_time|date:"H:i" }}</td>
+                    <td>{{ result.arrival_time }}</td>
                     <td>
                         <a href="{% url 'flight_routes:flight_update' result.pk %}">
                             <button class="button primary filled" type="button">Edit</button>
