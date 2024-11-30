@@ -120,7 +120,7 @@
     <h1 class="header">Available Flight Schedules</h1>
 
     <!-- Filter Form -->
-    <form method="get">
+    <form method="GET" action="{% url 'flight_schedules:flight_schedule_list' %}">
         <div class="sched-form">
             <div class="form-group">
                 <label for="schedule_id"><strong>Input Schedule ID:</strong></label>
