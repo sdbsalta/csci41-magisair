@@ -35,7 +35,6 @@ class CrewMemberListView(ListView):
 
         queryset = CrewMember.objects.all()
 
-        # Apply filters if they exist
         if crew_ID_filter:
             queryset = queryset.filter(crew_id=crew_ID_filter)
 

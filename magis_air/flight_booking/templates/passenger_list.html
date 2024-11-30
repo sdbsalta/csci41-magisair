@@ -110,6 +110,37 @@
     <img id="building" src="{% static 'img/buildings.png' %}" alt="Background Building" /> 
 
     <h1 class="header">Current Passengers</h1>
+
+    <form method="GET" action="{% url 'flight_booking:passenger_list' %}">
+        {% csrf_token %}
+        <div class="passenger-form">
+            
+            <!-- Passenger ID Input -->
+            <div class="form-group">
+                <label for="passenger-id"><strong>Input Passenger ID:</strong></label>
+                {{ passenger_id_form.passenger_id }}  <!-- Displaying the passenger_id field -->
+            </div>
+    
+            <!-- Spacer -->
+            <div class="spacer"></div>
+    
+            <!-- Passenger Name Input -->
+            <div class="form-group">
+                <label for="name"><strong>Input Passenger Name:</strong></label>
+                {{ name_form.name }}  <!-- Displaying the name field -->
+            </div>
+    
+            <!-- Gender Input -->
+            <div class="form-group">
+                <label for="gender"><strong>Filter by Gender:</strong></label>
+                {{ gender_form.gender }}  <!-- Displaying the gender filter -->
+            </div>
+    
+            <!-- Search Button -->
+            <button type="submit" class="button primary filled">Search</button>
+        </div>
+    </form>
+    
     
     <table>
         <thead>
