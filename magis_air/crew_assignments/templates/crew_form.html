@@ -10,61 +10,53 @@
 
     .addcrewmems {
         display: flex;
-        align-items: center;
-        height: 100vh;
-        max-width: 100vh;
-        justify-content: flex-start;
+        align-items: stretch;
+        min-height: 100vh;
+        margin: 0;
     }
 
     .addcrewmems .image-container {
-        flex: 0 0 60%; 
+        flex: 0 0 35%; 
         height: 100vh;
-        display: flex;
-        justify-content: left;
+        margin-right: 1.5rem;
+        padding: 0; 
     }
-    
+
     .addcrewmems .image-container img {
         height: 100%;
-        width: auto;
+        width: 100%;
         object-fit: cover;
+        display: block; 
     }
 
     .addcrewmems .addmems {
+        flex: 1; 
+        padding: 2rem;
+        box-sizing: border-box; 
         text-align: left;
-        padding-left: 5.5rem;
-        min-width: 500px; 
-        width: auto; 
-        overflow-wrap: break-word; 
+        align-content: center;
     }
 
-    .addcrewmems .addmems .header{
+    .addcrewmems .addmems .header {
         color: var(--primary-08);
         margin-bottom: 10px;
     }
+
+    .addcrewmems .addmems .form-container p {
+        margin-top: 1rem; 
+        margin-bottom: 0.5rem; 
+    }
     
-    .addcrewmems .addmems a {
-        text-decoration: none;
+    .addcrewmems .addmems .form-container p strong {
+        display: block; 
+        margin-bottom: 0.3rem; 
     }
     
-    .addcrewmems .addmems a:hover {
-        text-decoration: underline;
+    .addcrewmems .addmems .form-container input, 
+    .addcrewmems .addmems .form-container select {
+        padding: 10px; 
+        width: 40%; 
     }
-
-    .addcrewmems .addmems button {
-        margin-top: 15px;
-        margin-bottom: 15px;
-        margin-right: 4px;
-    }
-
-    .addcrewmems .form-container p {
-        text-decoration: none;
-    }
-
-    .addcrewmems input, .addcrewmems select {
-        padding: 10px;
-        margin-top: 5px;
-    }
-
 </style>
 {% endblock %}
 
