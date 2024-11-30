@@ -74,16 +74,23 @@
         border-radius: 5px;
     }
 
-    .search-form {
+    .flight-form {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 1rem;
         margin-bottom: 2rem;
+        margin-top: 2rem;
     }
 
-    .search-form input,
-    .search-form select {
+    .flight-form .form-group {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem; /* Space between label and input */
+    }
+
+    .flight-form input,
+    .flight-form select {
         padding: 0.5rem;
         width: 150px;
         border-radius: 5px;
@@ -91,7 +98,7 @@
         text-align: center;
     }
 
-    .search-form button:hover {
+    .flight-form button:hover {
         background-color: var(--primary-07); /* Slightly darker shade on hover */
     }
 
@@ -111,25 +118,27 @@
     
     <h1 class="header">Available Flight Routes</h1>
 
-    <form method="GET" action="{% url 'flight_routes:flight_list' %}" class="search-form">
+    <form method="GET" action="{% url 'flight_routes:flight_list' %}">
         {% csrf_token %}
-        <!-- Origin Dropdown -->
-        <div class="form-group">
-            <label for="origin"><strong>Select Origin:</strong></label>
-            {{ form.origin }}
-        </div>
+        <div class="flight-form">
+            <!-- Origin Dropdown -->
+            <div class="form-group">
+                <label for="origin"><strong>Select Origin:</strong></label>
+                {{ form.origin }}
+            </div>
 
-        <!-- Spacer -->
-        <div class="spacer"></div>
-        
-        <!-- Destination Dropdown -->
-        <div class="form-group">
-            <label for="destination"><strong>Select Destination:</strong></label>
-            {{ form.destination }}
-        </div>
+            <!-- Spacer -->
+            <div class="spacer"></div>
+            
+            <!-- Destination Dropdown -->
+            <div class="form-group">
+                <label for="destination"><strong>Select Destination:</strong></label>
+                {{ form.destination }}
+            </div>
 
-        <!-- Search Button -->
-        <button type="submit" class="button primary filled">Search</button>
+            <!-- Search Button -->
+            <button type="submit" class="button primary filled">Search</button>
+        </div>
     </form>
 
     <!-- Table to display flight information -->

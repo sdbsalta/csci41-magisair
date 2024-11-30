@@ -71,6 +71,7 @@
         align-items: center; /* Aligns items vertically in the same row */
         gap: 1rem; /* Space between each element */
         margin-top: 2rem; /* Add space above the form */
+        margin-bottom: 2rem;
     }
 
     .crew-form .form-group {
@@ -104,12 +105,13 @@
     <img id="building" src="{% static 'img/buildings.png' %}" alt="Background Building" /> 
 
     <h1 class="header">Current Crew Members</h1>
+    
     <form method="GET" action="{% url 'crew_assignments:crew_list' %}">
         {% csrf_token %}
         <div class="crew-form">
             <!-- Crew ID Input -->
             <div class="form-group">
-                <label for="crew-id"><strong>Crew ID:</strong></label>
+                <label for="crew-id"><strong>Input Crew ID:</strong></label>
                 {{ crew_id_form.crew_ID }}
             </div>
     
@@ -118,7 +120,7 @@
     
             <!-- Crew Role Dropdown -->
             <div class="form-group">
-                <label for="crew-role"><strong>Crew Role:</strong></label>
+                <label for="crew-role"><strong>Select Crew Role:</strong></label>
                 {{ crew_role_form.role }}
             </div>
     

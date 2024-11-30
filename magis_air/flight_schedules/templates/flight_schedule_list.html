@@ -73,13 +73,46 @@
         margin-top: 15px;
         margin-bottom: 15px;
         margin-right: 4px;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
+    }
+
+    .sched-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .sched-form .form-group {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .sched-form input,
+    .sched-form button {
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        border: 1px solid var(--neutral-02);
+    }
+
+    .sched-form button:hover {
+        background-color: var(--primary-07);
+    }
+
+    .spacer {
+        border-left: 2px solid var(--secondary-10);
+        height: 30px; /* Matches input box height */
     }
 
 </style>
 {% endblock %}
+
 {% block content %}
 <div id="sched">
-    
     <img id="plane" src="{% static 'img/plane.png' %}" alt="Top Right Plane" />
     <img id="passport" src="{% static 'img/passport.png' %}" alt="Bottom Left Passport" />
 
@@ -87,16 +120,20 @@
 
     <!-- Filter Form -->
     <form method="get">
-        <div class="filter-container">
-            <div>
-                <label for="schedule_id">Schedule ID:</label>
+        <div class="sched-form">
+            <div class="form-group">
+                <label for="schedule_id"><strong>Input Schedule ID:</strong></label>
                 <input type="text" id="schedule_id" name="schedule_id" value="{{ request.GET.schedule_id }}">
             </div>
-            <div>
-                <label for="date">Date:</label>
+
+            <div class="spacer"></div>
+
+            <div class="form-group">
+                <label for="date"><strong>Select Date:</strong></label>
                 <input type="date" id="date" name="date" value="{{ request.GET.date }}">
             </div>
-            <button type="submit">Filter</button>
+
+            <button type="submit" class="button primary filled">Search</button>
         </div>
     </form>
 
@@ -106,7 +143,7 @@
             <tr>
                 <th>Schedule ID</th>
                 <th>Date</th>
-                <th>Actions</th> <!-- For Edit and Delete links -->
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
