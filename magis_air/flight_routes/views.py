@@ -6,6 +6,31 @@ from .models import Flight, generate_flight_id
 class FlightListView(ListView):
     model = Flight
     template_name = 'flight_list.html'
+    context_object_name = 'data'
+
+    def get_queryset(self):
+        origin_filter = self.request.GET.get('origin')
+        print("Filtering by origin:", origin_filter)  # Debugging line
+        if origin_filter:
+            return Flight.objects.filter(origin=origin_filter)
+        return Flight.objects.all()
+
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = self.get_form()
+        return context
+
+    def get_form(self):
+        # Create and return the form for filtering flights
+        from django import forms
+        class FlightSearchForm(forms.Form):
+            origin = forms.ChoiceField(
+                choices=[('Manila, Philippines', 'Manila, Philippines'), ('Tokyo, Japan', 'Tokyo, Japan')],
+                required=False,
+                label="Select Origin"
+            )
+        return FlightSearchForm(self.request.GET)
 
 class FlightCreateView(CreateView):
     model = Flight

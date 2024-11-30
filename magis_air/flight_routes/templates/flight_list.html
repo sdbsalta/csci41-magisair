@@ -81,6 +81,12 @@
     <img class="bottom-left-svg" src="{% static 'svg/continent.svg' %}" alt="Bottom Left Continent" />
     
     <h1 class="header">Available Flight Routes</h2>
+
+    <form method="GET" action="{% url 'flight_routes:flight_list' %}">
+        {% csrf_token %}
+        {{ form.as_p }} 
+        <input type="submit" value="Search">
+    </form>
     
      <!-- Table to display flight information -->
      <table>
@@ -95,22 +101,22 @@
             </tr>
         </thead>
         <tbody>
-            {% for flight in object_list %}
+            {% for result in data %}
                 <tr>
                     <td>
-                        <a href="{% url 'flight_routes:flight_detail' flight.pk %}">
-                            {{ flight.flight_id }}
+                        <a href="{% url 'flight_routes:flight_detail' result.pk %}">
+                            {{ result.flight_id }}
                         </a>
                     </td>
-                    <td>{{ flight.origin }}</td>
-                    <td>{{ flight.destination }}</td>
-                    <td>{{ flight.travel_duration_hours }} hrs & {{ flight.travel_duration_minutes }} mins</td>
-                    <td>{{ flight.departure_time }}</td>
+                    <td>{{ result.origin }}</td>
+                    <td>{{ result.destination }}</td>
+                    <td>{{ result.travel_duration_hours }} hrs & {{ result.travel_duration_minutes }} mins</td>
+                    <td>{{ result.departure_time }}</td>
                     <td>
-                        <a href="{% url 'flight_routes:flight_update' flight.pk %}">
+                        <a href="{% url 'flight_routes:flight_update' result.pk %}">
                             <button class="button primary filled" type="button">Edit</button>
                         </a>
-                        <a href="{% url 'flight_routes:flight_delete' flight.pk %}">
+                        <a href="{% url 'flight_routes:flight_delete' result.pk %}">
                             <button class="button tertiary filled" type="button">Delete</button> 
                         </a>
                     </td>
