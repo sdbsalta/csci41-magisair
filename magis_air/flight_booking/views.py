@@ -1,3 +1,4 @@
+from django import forms
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
@@ -12,10 +13,48 @@ class PassengerCreateView(CreateView):
     fields = ['name', 'birth_date', 'gender'] 
     template_name = 'passenger_form.html'
     success_url = reverse_lazy('flight_booking:passenger_list') 
+    
+
+
+class BookingIDSearchForm(forms.Form):
+    booking_id = forms.CharField(
+        min_length=13,
+        max_length=13,
+        required=False,
+        label="Type Booking ID"
+    )
+
+class PassengerSearchForm(forms.Form):
+    passenger = forms.CharField(
+        min_length=10,
+        max_length=160,
+        required=False,
+        label="Type Passenger Name"
+    )
 
 class BookingListView(ListView):
     model = Booking
     template_name = 'booking_list.html'
+    
+    def get_queryset(self):
+        booking_id_filter = self.request.GET.get('booking_id')
+        passenger_filter = self.request.GET.get('passenger')
+
+        queryset = Booking.objects.all()
+
+        if booking_id_filter:
+            queryset = queryset.filter(booking_id=booking_id_filter)
+
+        if passenger_filter:
+            queryset = queryset.filter(passenger__name__icontains=passenger_filter)
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['booking_id_form'] = BookingIDSearchForm(self.request.GET)
+        context['passenger_id_form'] = PassengerSearchForm(self.request.GET)
+        return context
 
 class BookingCreateView(CreateView):
     model = Booking
