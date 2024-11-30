@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %}Create / Update Booking{% endblock %}
+{% block title %}Booking Form{% endblock %}
 
 {% block styles %}
 <style>
@@ -14,6 +14,7 @@
         display: flex;
         align-items: center;
         height: 100vh;
+        max-width: 100vh;
         justify-content: flex-start;
     }
 
@@ -23,35 +24,35 @@
         display: flex;
         justify-content: left;
     }
-
+    
     .addbooking .image-container img {
         height: 100%;
         width: auto;
         object-fit: cover;
     }
 
-    .addbooking .adddetails {
+    .addbooking .addmems {
         text-align: left;
         padding-left: 5.5rem;
         min-width: 500px; 
         width: auto; 
-        overflow-wrap: break-word;
+        overflow-wrap: break-word; 
     }
 
-    .addbooking .adddetails .header {
+    .addbooking .addmems .header{
         color: var(--primary-08);
         margin-bottom: 10px;
     }
-
-    .addbooking .adddetails a {
+    
+    .addbooking .addmems a {
         text-decoration: none;
     }
-
-    .addbooking .adddetails a:hover {
+    
+    .addbooking .addmems a:hover {
         text-decoration: underline;
     }
 
-    .addbooking .adddetails button {
+    .addbooking .addmems button {
         margin-top: 15px;
         margin-bottom: 15px;
         margin-right: 4px;
@@ -61,7 +62,7 @@
         text-decoration: none;
     }
 
-    .addbooking input, .addbooking select {
+    .addbooking input, .addcrewmems select {
         padding: 10px;
         margin-top: 5px;
     }
@@ -71,9 +72,9 @@
 
 {% block content %}
 <div class="addbooking"> 
-    <!-- <div class="image-container">
-        <img src="{% static 'img/flight.png' %}" alt="Flight Image">
-    </div> -->
+    <div class="image-container">
+        <img src="{% static 'img/flight_route_add.png' %}" alt="Flight Image">
+    </div> 
 
     <a href="{% url 'flight_booking:passenger_create' %}">
         <button class="button tertiary filled" type="button">Create New Passenger</button>
