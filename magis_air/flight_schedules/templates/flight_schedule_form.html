@@ -111,9 +111,15 @@
                     <input type="text" id="id_schedule_id" name="schedule_id" value="{{ form.schedule_id.value }}">
                 </p>
                 {% endif %}
-                <p>
+                <!--<p>
                     <strong>Date:</strong> {{ form.date }}
-                </p>
+                </p>-->
+
+                <div class="form-group">
+                    <label for="date"><strong>Select Date:</strong></label>
+                    <!-- Use the Django form field value as the default date -->
+                    <input type="date" id="date" name="date" value="{{ form.date.value|date:"Y-m-d" }}">
+                </div>
 
                 <div class="flight-row">
                     <p>
