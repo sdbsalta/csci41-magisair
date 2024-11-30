@@ -30,7 +30,7 @@
         object-fit: cover;
     }
 
-    .addpassenger .addmems {
+    .addpassenger .addpass {
         text-align: left;
         padding-left: 5.5rem;
         min-width: 500px;
@@ -38,20 +38,20 @@
         overflow-wrap: break-word;
     }
 
-    .addpassenger .addmems .header{
+    .addpassenger .addpass .header{
         color: var(--primary-08);
         margin-bottom: 10px;
     }
 
-    .addpassenger .addmems a {
+    .addpassenger .addpass a {
         text-decoration: none;
     }
 
-    .addpassenger .addmems a:hover {
+    .addpassenger .addpass a:hover {
         text-decoration: underline;
     }
 
-    .addpassenger .addmems button {
+    .addpassenger .addpass button {
         margin-top: 15px;
         margin-bottom: 15px;
         margin-right: 4px;
@@ -61,7 +61,7 @@
         text-decoration: none;
     }
 
-    .addpassenger input, .addpassenger select {
+    .addpassenger input, .addpass select {
         padding: 10px;
         margin-top: 5px;
     }
@@ -74,9 +74,9 @@
 {% block content %}
 <div class="addpassenger"> 
     <div class="image-container">
-        <img src="{% static 'img/passenger.png' %}" alt="Passenger Image">
+        <img src="{% static 'img/flight_route_add.png' %}" alt="Passenger Image">
     </div>
-    <div class="addmems">
+    <div class="addpass">
         <h2 class="header">{% if object %}Update{% else %}Add New{% endif %} Passenger</h2>
         <div class="form-container">
             <form method="post">
