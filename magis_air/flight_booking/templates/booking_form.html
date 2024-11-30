@@ -12,28 +12,31 @@
 
     .addbooking {
         display: flex;
-        align-items: center;
-        height: 100vh;
-        max-width: 100vh;
-        justify-content: flex-start;
+        align-items: stretch;
+        min-height: 100vh;
+        margin: 0;
+        align-items: center; 
     }
 
     .addbooking .image-container {
-        flex: 0 0 60%; 
+        flex: 0 0 45%; 
         height: 100vh;
-        display: flex;
-        justify-content: left;
-    }
-    
-    .addbooking .image-container img {
-        height: 100%;
-        width: auto;
-        object-fit: cover;
+        margin-right: 3rem;
+        padding: 0; 
     }
 
-    .addbooking .form-container {
+    .addbooking .image-container img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        display: block; 
+    }
+
+    .addcrewmems .form-container {
+        flex: 1; 
+        padding: 2rem;
+        box-sizing: border-box; 
         text-align: left;
-        padding-left: 5.5rem;
     }
 
     .addbooking .form-container .button {
