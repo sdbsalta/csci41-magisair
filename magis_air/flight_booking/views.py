@@ -19,7 +19,7 @@ class BookingListView(ListView):
 
 class BookingCreateView(CreateView):
     model = Booking
-    fields = ['booking_id', 'total_cost', 'passenger', 'flight', 'additional_items']
+    fields = ['total_cost', 'passenger', 'flight', 'additional_items']  # Omit 'booking_id' from the form
     template_name = 'booking_form.html'
 
     def get_success_url(self):
