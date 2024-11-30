@@ -69,7 +69,7 @@
         border-radius: 5px;
     }
 
-    .crew-form {
+    .passenger-form {
         display: flex;
         justify-content: center; /* Centers all items horizontally */
         align-items: center; /* Aligns items vertically in the same row */
@@ -78,14 +78,14 @@
         margin-bottom: 2rem;
     }
 
-    .crew-form .form-group {
+    .passenger-form .form-group {
         display: flex;
         align-items: center;
         gap: 0.5rem; /* Space between label and input */
     }
 
-    .crew-form input,
-    .crew-form select {
+    .passenger-form input,
+    .passenger-form select {
         width: 150px; /* Adjust the width of the input fields */
         padding: 0.5rem;
         border: 1px solid var(--neutral-02);
@@ -93,7 +93,7 @@
         text-align: center;
     }
 
-    .crew-form button:hover {
+    .passenger-form button:hover {
         background-color: var(--primary-07); /* Slightly darker shade on hover */
     }
 
@@ -121,16 +121,15 @@
                 {{ passenger_id_form.passenger_id }}  <!-- Displaying the passenger_id field -->
             </div>
     
-            <!-- Spacer -->
             <div class="spacer"></div>
     
-            <!-- Passenger Name Input -->
             <div class="form-group">
                 <label for="name"><strong>Input Passenger Name:</strong></label>
                 {{ name_form.name }}  <!-- Displaying the name field -->
             </div>
+
+            <div class="spacer"></div>
     
-            <!-- Gender Input -->
             <div class="form-group">
                 <label for="gender"><strong>Filter by Gender:</strong></label>
                 {{ gender_form.gender }}  <!-- Displaying the gender filter -->
