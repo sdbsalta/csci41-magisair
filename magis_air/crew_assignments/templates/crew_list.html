@@ -1,3 +1,5 @@
+<!-- crew_list.html -->
+
 {% extends "base.html" %}
 
 {% load static %}
@@ -105,7 +107,7 @@
     <img id="building" src="{% static 'img/buildings.png' %}" alt="Background Building" /> 
 
     <h1 class="header">Current Crew Members</h1>
-    
+
     <form method="GET" action="{% url 'crew_assignments:crew_list' %}">
         {% csrf_token %}
         <div class="crew-form">

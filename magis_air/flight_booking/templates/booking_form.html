@@ -1,19 +1,94 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}Create / Update Booking{% endblock %}
 
+{% block styles %}
+<style>
+    body {
+        background-color: var(--tertiary-01);
+    }
+
+    .addbooking {
+        display: flex;
+        align-items: center;
+        height: 100vh;
+        justify-content: flex-start;
+    }
+
+    .addbooking .image-container {
+        flex: 0 0 60%; 
+        height: 100vh;
+        display: flex;
+        justify-content: left;
+    }
+
+    .addbooking .image-container img {
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+    }
+
+    .addbooking .adddetails {
+        text-align: left;
+        padding-left: 5.5rem;
+        min-width: 500px; 
+        width: auto; 
+        overflow-wrap: break-word;
+    }
+
+    .addbooking .adddetails .header {
+        color: var(--primary-08);
+        margin-bottom: 10px;
+    }
+
+    .addbooking .adddetails a {
+        text-decoration: none;
+    }
+
+    .addbooking .adddetails a:hover {
+        text-decoration: underline;
+    }
+
+    .addbooking .adddetails button {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        margin-right: 4px;
+    }
+
+    .addbooking .form-container p {
+        text-decoration: none;
+    }
+
+    .addbooking input, .addbooking select {
+        padding: 10px;
+        margin-top: 5px;
+    }
+
+</style>
+{% endblock %}
+
 {% block content %}
+<div class="addbooking"> 
+    <!-- <div class="image-container">
+        <img src="{% static 'img/flight.png' %}" alt="Flight Image">
+    </div> -->
 
-<p><a href="{% url 'flight_booking:passenger_create' %}">
-    <button>Create New Passenger</button>
-</a></p>
+    <a href="{% url 'flight_booking:passenger_create' %}">
+        <button class="button tertiary filled" type="button">Create New Passenger</button>
+    </a>
 
-    <h2>{% if object %}Update Booking{% else %}Create Booking{% endif %}</h2>
-    
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save</button>
-    </form>
-    
+    <h2>{% if object %}Update Booking{% else %}Create New Booking{% endif %}</h2>
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="button primary filled">Save</button>
+            <a href="{% url 'flight_booking:booking_list' %}">
+                <button class="button tertiary filled" type="button">Cancel</button> 
+            </a>
+        </form>
+    </div>
+</div>
 {% endblock %}

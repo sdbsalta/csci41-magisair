@@ -1,10 +1,115 @@
+<!-- passenger_list.html -->
+
 {% extends 'base.html' %}
+
+{% load static %}
 
 {% block title %}Passenger List{% endblock %}
 
+{% block styles %}
+<style>
+    body {
+        background-color: var(--tertiary-01);
+        position: relative;
+    }
+
+    #building {
+        position: absolute;
+        z-index: -1; 
+        bottom: 40; 
+        left: 0; 
+        width: 100vw; 
+        height: 60vh; 
+        object-fit: cover; 
+    }
+
+    #passenger-list {
+        padding-left: 5rem;
+        padding-right: 5rem;
+        padding-top: 3.5rem;
+        text-align: center;
+    }
+
+    #passenger-list .header {
+        color: var(--primary-08);
+    }
+
+    #passenger-list table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: var(--neutral-01);
+        border-radius: 15px;
+    }
+
+    #passenger-list th, td {
+        padding: 25px;
+        text-align: left;
+        border: none;
+    }
+
+    #passenger-list th {
+        color: var(--primary-07);
+    }
+
+    #passenger-list a {
+        text-decoration: none;
+    }
+
+    #passenger-list a:hover {
+        text-decoration: underline;
+    }
+
+    #passenger-list button {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        margin-right: 4px;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
+    }
+
+    .crew-form {
+        display: flex;
+        justify-content: center; /* Centers all items horizontally */
+        align-items: center; /* Aligns items vertically in the same row */
+        gap: 1rem; /* Space between each element */
+        margin-top: 2rem; /* Add space above the form */
+        margin-bottom: 2rem;
+    }
+
+    .crew-form .form-group {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem; /* Space between label and input */
+    }
+
+    .crew-form input,
+    .crew-form select {
+        width: 150px; /* Adjust the width of the input fields */
+        padding: 0.5rem;
+        border: 1px solid var(--neutral-02);
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .crew-form button:hover {
+        background-color: var(--primary-07); /* Slightly darker shade on hover */
+    }
+
+    .spacer {
+        border-left: 2px solid var(--secondary-10);
+        height: 30px; /* Matches input box height */
+    }
+
+</style>
+{% endblock %}
+
 {% block content %}
-    <h2>Passenger List</h2>
-    <p><a href="{% url 'flight_booking:passenger_create' %}">Create New Passenger</a></p>
+<div id="passenger-list">
+    <img id="building" src="{% static 'img/buildings.png' %}" alt="Background Building" /> 
+
+    <h1 class="header">Current Passengers</h1>
     
     <table>
         <thead>
@@ -26,4 +131,9 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <a href="{% url 'flight_booking:passenger_create' %}">
+        <button class="button primary filled" type="button">Add New Passenger</button>
+    </a>
+</div>
 {% endblock %}

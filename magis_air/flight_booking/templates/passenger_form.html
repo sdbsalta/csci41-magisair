@@ -1,13 +1,95 @@
+<!-- passenger_form.html -->
 {% extends 'base.html' %}
 
-{% block title %}Create Passenger{% endblock %}
+{% load static %}
+
+{% block styles %}
+<style>
+    body {
+        background-color: var(--tertiary-01);
+    }
+
+    .addpassenger {
+        display: flex;
+        align-items: center;
+        height: 100vh;
+        max-width: 100vh;
+        justify-content: flex-start;
+    }
+
+    .addpassenger .image-container {
+        flex: 0 0 60%;
+        height: 100vh;
+        display: flex;
+        justify-content: left;
+    }
+
+    .addpassenger .image-container img {
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+    }
+
+    .addpassenger .addmems {
+        text-align: left;
+        padding-left: 5.5rem;
+        min-width: 500px;
+        width: auto;
+        overflow-wrap: break-word;
+    }
+
+    .addpassenger .addmems .header{
+        color: var(--primary-08);
+        margin-bottom: 10px;
+    }
+
+    .addpassenger .addmems a {
+        text-decoration: none;
+    }
+
+    .addpassenger .addmems a:hover {
+        text-decoration: underline;
+    }
+
+    .addpassenger .addmems button {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        margin-right: 4px;
+    }
+
+    .addpassenger .form-container p {
+        text-decoration: none;
+    }
+
+    .addpassenger input, .addpassenger select {
+        padding: 10px;
+        margin-top: 5px;
+    }
+
+</style>
+{% endblock %}
+
+{% block title %}Passenger Form{% endblock %}
 
 {% block content %}
-    <h2>Create New Passenger</h2>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}  
-        <button type="submit">Save Passenger</button>
-    </form>
-    <p><a href="{% url 'flight_booking:passenger_list' %}">Back to Passenger List</a></p>
+<div class="addpassenger"> 
+    <div class="image-container">
+        <img src="{% static 'img/passenger.png' %}" alt="Passenger Image">
+    </div>
+    <div class="addmems">
+        <h2 class="header">{% if object %}Update{% else %}Add New{% endif %} Passenger</h2>
+        <div class="form-container">
+            <form method="post">
+                {% csrf_token %}
+                    <p><strong>Name:</strong> {{ form.name }}</p>
+                    <p><strong>Birth Date:</strong> {{ form.birth_date }}</p>
+                    <p><strong>Gender:</strong> {{ form.gender }}</p>
+                    <button type="submit" class="button primary filled">Save</button>
+                    <a href="{% url 'flight_booking:passenger_list' %}">
+                        <button class="button tertiary filled" type="button">Cancel</button> 
+                    </a>
+            </form>
+        </div> 
+    </div>
+</div>
 {% endblock %}
