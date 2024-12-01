@@ -16,7 +16,7 @@ class PassengerIDSearchForm(forms.Form):
     
 class PassengerNameSearchForm(forms.Form):
     name = forms.CharField(
-        min_length=10,
+        min_length=1,
         max_length=160,
         required=False,
         label="Type Passenger Name"
@@ -76,7 +76,7 @@ class BookingIDSearchForm(forms.Form):
 
 class Booking_PassengerSearchForm(forms.Form):
     passenger = forms.CharField(
-        min_length=10,
+        min_length=1,
         max_length=160,
         required=False,
         label="Type Passenger Name"
