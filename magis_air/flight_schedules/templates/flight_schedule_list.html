@@ -135,6 +135,13 @@
             </div>
 
             <button type="submit" class="button primary filled">Search</button>
+
+            <!-- Clear Filter -->
+            <div class="pass-form" style="justify-content: space-between;">
+                <a href="{% url 'flight_schedules:flight_schedule_list' %}">
+                    <button class="button primary outlined" type="button">Clear Filter</button>
+                </a>
+            </div>
         </div>
     </form>
 
