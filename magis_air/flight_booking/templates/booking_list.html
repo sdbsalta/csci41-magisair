@@ -130,6 +130,13 @@
     
             <!-- Search Button -->
             <button type="submit" class="button primary filled">Search</button>
+
+            <!-- Clear Filter -->
+            <div class="book-form" style="justify-content: space-between;">
+                <a href="{% url 'flight_booking:booking_list' %}">
+                    <button class="button primary outlined" type="button">Clear Filter</button>
+                </a>
+            </div>
         </div>
     </form>    
 
