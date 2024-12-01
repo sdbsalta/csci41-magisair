@@ -129,3 +129,9 @@ class PassengerDeleteView(DeleteView):
     model = Passenger
     template_name = 'passenger_confirm_delete.html'
     success_url = reverse_lazy('flight_booking:passenger_list')
+
+class PassengerUpdateView(UpdateView):
+    model = Passenger
+    fields = ['first_name', 'middle_name', 'last_name', 'birth_date', 'gender']
+    template_name = 'passenger_form.html'
+    success_url = reverse_lazy('flight_booking:passenger_list')

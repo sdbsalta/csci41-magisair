@@ -79,7 +79,7 @@
         <img src="{% static 'img/passengers.png' %}" alt="Passenger Image">
     </div>
     <div class="addpass">
-        <h2 class="header">{% if object %}Update{% else %}Add New{% endif %} Passenger</h2>
+        <h2 class="header">{% if object %}Update Passenger{% else %}Add New Passenger{% endif %}</h2>
         <div class="form-container">
             <form method="post">
                 {% csrf_token %}

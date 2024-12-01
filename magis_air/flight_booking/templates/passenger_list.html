@@ -155,7 +155,7 @@
                 <th>Name</th>
                 <th>Birth Date</th>
                 <th>Gender</th>
-                <th>Actions</th> 
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -166,6 +166,9 @@
                     <td>{{ passenger.birth_date }}</td>
                     <td>{{ passenger.get_gender_display }}</td>
                     <td>
+                        <a href="{% url 'flight_booking:passenger_update' passenger.pk %}">
+                            <button class="button primary filled" type="button">Edit</button>
+                        </a>
                         <a href="{% url 'flight_booking:passenger_delete' passenger.pk %}">
                             <button class="button tertiary filled" type="button">Delete</button>
                         </a>
@@ -174,6 +177,7 @@
             {% endfor %}
         </tbody>
     </table>
+    
     
 
     <a href="{% url 'flight_booking:passenger_create' %}">
