@@ -118,7 +118,7 @@ class BookingUpdateView(UpdateView):
     model = Booking
     fields = ['total_cost', 'additional_items']
     template_name = 'booking_form.html'
-    success_url = reverse_lazy('booking_list')
+    success_url = reverse_lazy('flight_booking:booking_list')
 
 class BookingDeleteView(DeleteView):
     model = Booking
