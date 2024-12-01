@@ -24,7 +24,7 @@ class PassengerNameSearchForm(forms.Form):
     
 class PassengerGenderSearchForm(forms.Form):
     gender = forms.ChoiceField(
-        choices= [('', '---------')] + [('Male', 'Male'), ('Female', 'Female'), ('Others', 'Others')],
+        choices= [('', '---------')] + [('M', 'Male'), ('F', 'Female'), ('O', 'Others')],
         required=False,
         label="Select Gender"
     )
