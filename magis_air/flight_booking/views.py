@@ -85,7 +85,7 @@ class Booking_PassengerSearchForm(forms.Form):
 class BookingListView(ListView):
     model = Booking
     template_name = 'booking_list.html'
-    
+  
     def get_queryset(self):
         booking_id_filter = self.request.GET.get('booking_id')
         passenger_filter = self.request.GET.get('passenger')
