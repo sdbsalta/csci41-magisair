@@ -60,7 +60,7 @@ class PassengerListView(ListView):
     
 class PassengerCreateView(CreateView):
     model = Passenger
-    fields = ['name', 'birth_date', 'gender'] 
+    fields = ['first_name', 'middle_name', 'last_name', 'birth_date', 'gender'] 
     template_name = 'passenger_form.html'
     success_url = reverse_lazy('flight_booking:passenger_list') 
     

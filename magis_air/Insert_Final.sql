@@ -61,11 +61,11 @@ VALUES
 
 
 -- Insert data into Passenger table
-INSERT INTO "flight_booking_passenger" ("passenger_id", "name", "birth_date", "gender")
+INSERT INTO "flight_booking_passenger" ("passenger_id", "name", "birth_date", "gender", "first_name", "last_name", "middle_name")
 VALUES
-    ('P00001', 'Alice Williams', '1990-05-14', 'F'),
-    ('P00002', 'Bob Brown', '1985-11-22', 'M'),
-    ('P00003', 'Charlie Davis', '1992-08-19', 'M');
+    ('P00001', 'Alice Williams', '1990-05-14', 'F', 'Alice', 'Williams', ''),
+    ('P00002', 'Bob Brown', '1985-11-22', 'M', 'Bob', 'Brown', ''),
+    ('P00003', 'Charlie Davis', '1992-08-19', 'M', 'Charlie', 'Davis', '');
 
 -- Insert data into Booking table with a placeholder for additional_items
 INSERT INTO "flight_booking_booking" ("booking_id", "total_cost", "booking_date", "flight_id", "passenger_id", "additional_items")

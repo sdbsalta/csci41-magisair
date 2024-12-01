@@ -77,6 +77,11 @@ CREATE TABLE "flight_booking_passenger" (
     "gender" varchar(1) NOT NULL
 );
 
+-- ALTER TABLE flight_booking_passenger
+-- ADD COLUMN first_name VARCHAR(20),
+-- ADD COLUMN last_name VARCHAR(20);
+-- ADD COLUMN middle_name VARCHAR(20),
+
 -- Create Booking table with constraints
 CREATE TABLE "flight_booking_booking" (
     "booking_id" varchar(15) NOT NULL PRIMARY KEY,

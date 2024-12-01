@@ -6,9 +6,16 @@ from django.utils import timezone
 class Passenger(models.Model):
     passenger_id = models.CharField(primary_key=True, max_length=17, unique=True)
     name = models.CharField(max_length=255)
+    first_name = models.CharField(max_length=20, null=True);
+    middle_name = models.CharField(max_length=20, null=True, blank=True);
+    last_name = models.CharField(max_length=20, null=True);
     birth_date = models.DateField()
     GENDER_CHOICES = [('M', 'Male'), ('F', 'Female'), ('O', 'Others')]
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    
+    def update_name(self):
+        """Update the name field by concatenating first, middle, and last names."""
+        self.name = f"{self.first_name} {self.middle_name or ''} {self.last_name}".strip()
     
     def save(self, *args, **kwargs):
         if not self.passenger_id:
@@ -19,6 +26,7 @@ class Passenger(models.Model):
             seq_str = str(seq_num).zfill(6)
             self.passenger_id = f'PAS-{today}-{seq_str}'
         
+        self.update_name()  
         super().save(*args, **kwargs)
         
     def __str__(self):
