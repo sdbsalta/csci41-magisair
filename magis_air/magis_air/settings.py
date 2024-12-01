@@ -80,8 +80,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'magis_air.wsgi.application'
 
 
-# Database
+# Database 
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+
+
 
 # psql -U postgres -d "magis-air"
 DATABASES = {
