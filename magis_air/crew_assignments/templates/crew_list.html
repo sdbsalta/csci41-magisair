@@ -134,17 +134,15 @@
                 {{ crew_role_form.role }}
             </div>
 
-            <div class="crew-form" style="justify-content: space-between;">
-                <a href="{% url 'crew_assignments:crew_list' %}">
-                    <button class="button primary filled" type="button">Revert Sort</button>
-                </a>
-               
-            </div>
-            
-            
-    
             <!-- Search Button -->
             <button type="submit" class="button primary filled">Search</button>
+
+            <!-- Clear Filter -->
+            <div class="crew-form" style="justify-content: space-between;">
+                <a href="{% url 'crew_assignments:crew_list' %}">
+                    <button class="button primary outlined" type="button">Clear Filter</button>
+                </a>
+            </div>
         </div>
     </form>
 

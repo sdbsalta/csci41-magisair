@@ -59,12 +59,12 @@
 .button.primary.outlined {
     --button-enabled-border-color: var(--primary);
     color: var(--primary);
-    background: var(--primary-01);
-    border: 2px solid var(--primary); 
+    background: white;
+    border-color: 2px solid var(--primary); 
 }
 
 .button.primary.outlined:hover {
-    background: var(--primary-03); 
+    background: var(--primary-02); 
     border-color: var(--primary-07); 
 }
 
@@ -77,7 +77,7 @@
     --button-enabled-border-color: var(--secondary);
     color: var(--secondary);
     background: var(--secondary-02);
-    border: 2px solid var(--secondary); 
+    border-color: 2px solid var(--secondary); 
 }
 
 .button.secondary.outlined:hover {
@@ -93,12 +93,12 @@
 .button.tertiary.outlined {
     --button-enabled-border-color: var(--tertiary);
     color: var(--tertiary);
-    background: transparent;
-    border: 2px solid var(--tertiary); /* Border color */
+    background: white;
+    border: 2px solid var(--tertiary-09);
 }
 
 .button.tertiary.outlined:hover {
-    background: var(--tertiary-07);
+    background: var(--tertiary-05);
     border-color: var(--tertiary-07);
 }
 
