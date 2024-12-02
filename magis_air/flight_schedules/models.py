@@ -3,19 +3,21 @@ from crew_assignments.models import CrewMember
 from flight_routes.models import Flight
 
 class FlightSchedule(models.Model):
-    schedule_id = models.CharField(primary_key=True, max_length=17, unique=True)
+    schedule_id = models.CharField(primary_key=True, max_length=19, unique=True)
     date = models.DateField()
     flight = models.ForeignKey(Flight, on_delete=models.CASCADE)
     crew_members = models.ManyToManyField(CrewMember, related_name="schedules_for_member")  # Unique related_name
 
     def save(self, *args, **kwargs):
-        YY = self.date.strftime('%y') #Returns the last two digits of the year 
+        YYYY = self.date.strftime('%Y') #Returns the last two digits of the year 
         MM = self.date.strftime('%m')
         DD = self.date.strftime('%d')
         last_schedule = FlightSchedule.objects.filter(date=self.date).order_by('-schedule_id').first()
         last_seq_num = int(last_schedule.schedule_id.split('-')[-1]) if last_schedule else 0
         new_seq_num = last_seq_num + 1
-        self.schedule_id = f"SCH-{YY}{MM}{DD}-{str(new_seq_num).zfill(6)}"
+        self.schedule_id = f"SCH-{YYYY}{MM}{DD}-{str(new_seq_num).zfill(6)}"
+
+
         super().save(*args, **kwargs)
 
     def __str__(self):

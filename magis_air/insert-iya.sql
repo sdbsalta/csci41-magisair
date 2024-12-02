@@ -21,32 +21,32 @@ VALUES
 -- Insert data into CrewSchedule table
 INSERT INTO "crew_assignments_flightschedule" ("schedule_id", "date")
 VALUES
-    ('SCH-241201-000001', '2024-12-01'),
-    ('SCH-241202-000001', '2024-12-02'),
-    ('SCH-241203-000001', '2024-12-03');
+    ('SCH-20241201-000001', '2024-12-01'),
+    ('SCH-20241202-000001', '2024-12-02'),
+    ('SCH-20241203-000001', '2024-12-03');
 
 -- Insert data into FlightSchedule table
 INSERT INTO "flight_schedules_flightschedule" ("schedule_id", "date", "flight_id")
 VALUES
-    ('SCH-241201-000001', '2024-12-01', 'PL9328'),
-    ('SCH-241202-000001', '2024-12-02', 'AW0923'),
-    ('SCH-241203-000001', '2024-12-03', 'IF8362');
+    ('SCH-20241201-000001', '2024-12-01', 'PL9328'),
+    ('SCH-20241202-000001', '2024-12-02', 'AW0923'),
+    ('SCH-20241203-000001', '2024-12-03', 'IF8362');
 
 -- Insert data into CrewMember and FlightSchedule relationship table
 INSERT INTO "crew_assignments_flightschedule_crew_members" ("flightschedule_id", "crewmember_id")
 VALUES
-    ('SCH-241201-000001', '000001'),
-    ('SCH-241202-000001', '000002'),
-    ('SCH-241203-000001', '000003'),
-    ('SCH-241201-000001', '000004');
+    ('SCH-20241201-000001', '000001'),
+    ('SCH-20241202-000001', '000002'),
+    ('SCH-20241203-000001', '000003'),
+    ('SCH-20241201-000001', '000004');
 
 -- Insert data into CrewMember's flight schedules table
 INSERT INTO "crew_assignments_crewmember_flight_schedules" ("crewmember_id", "flightschedule_id")
 VALUES
-    ('000001', 'SCH-241201-000001'),
-    ('000002', 'SCH-241202-000001'),
-    ('000003', 'SCH-241203-000001'),
-    ('000004', 'SCH-241201-000001');
+    ('000001', 'SCH-20241201-000001'),
+    ('000002', 'SCH-20241202-000001'),
+    ('000003', 'SCH-20241203-000001'),
+    ('000004', 'SCH-20241201-000001');
 
 ------------------------------------ FLIGHT BOOKING ----------------------------------------------
 
@@ -79,7 +79,7 @@ VALUES
 -- Insert data into FlightScheduleCrewMembers table
 INSERT INTO "flight_schedules_flightschedule_crew_members" ("flightschedule_id", "crewmember_id")
 VALUES
-    ('FS0001', 'C00001'),
-    ('FS0001', 'C00002'),
-    ('FS0002', 'C00003'),
-    ('FS0003', 'C00004');
+    ('SCH-20241201-000001', '000001'),
+    ('SCH-20241201-000001', '000002'),
+    ('SCH-20241202-000001', '000003'),
+    ('SCH-20241203-000001', '000004');
