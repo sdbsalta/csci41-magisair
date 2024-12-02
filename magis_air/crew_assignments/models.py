@@ -15,9 +15,9 @@ class CrewMember(models.Model):
         (FLIGHT_ENGINEER, 'Flight Engineer'),
     ]
 
-    first_name = models.CharField(max_length=20, null=True);
-    middle_name = models.CharField(max_length=20, null=True, blank=True);
-    last_name = models.CharField(max_length=20, null=True);
+    first_name = models.CharField(max_length=20, null=True)
+    middle_name = models.CharField(max_length=20, null=True, blank=True)
+    last_name = models.CharField(max_length=20, null=True)
     # Crew_ID must be a unique 6-digit number, automatically generated
     crew_id = models.CharField(primary_key=True, max_length=6, unique=True)
     role = models.CharField(max_length=100, choices=CREW_ROLE_CHOICES, blank=False)  # Crew role with choices

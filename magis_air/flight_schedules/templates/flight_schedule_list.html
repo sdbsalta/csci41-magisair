@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block title %}Flight Schedules{% endblock %}
+
 {% block styles %}
 <style>
     body {
@@ -107,7 +108,7 @@
 
     .spacer {
         border-left: 2px solid var(--secondary-10);
-        height: 30px; /* Matches input box height */
+        height: 30px; 
     }
 
 </style>
@@ -120,7 +121,6 @@
 
     <h1 class="header">Available Flight Schedules</h1>
 
-    <!-- Filter Form -->
     <form method="GET" action="{% url 'flight_schedules:flight_schedule_list' %}">
         <div class="sched-form">
             <div class="form-group">
@@ -137,7 +137,6 @@
 
             <button type="submit" class="button primary filled">Search</button>
 
-            <!-- Clear Filter -->
             <div class="pass-form" style="justify-content: space-between;">
                 <a href="{% url 'flight_schedules:flight_schedule_list' %}">
                     <button class="button primary outlined" type="button">Clear Filter</button>
@@ -146,7 +145,6 @@
         </div>
     </form>
 
-    <!-- Table to display flight schedules -->
     <table>
         <thead>
             <tr>

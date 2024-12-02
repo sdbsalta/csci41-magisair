@@ -100,14 +100,13 @@
 
     <div class="details-container">
         <div class="details-grid">
-            <!-- First Column -->
+            
             <div class="details-column">
                 <p><strong>Flight ID:</strong> {{ flight.flight_id }}</p>
                 <p><strong>Origin:</strong> {{ flight.origin }}</p>
                 <p><strong>Destination:</strong> {{ flight.destination }}</p>
             </div>
     
-            <!-- Second Column -->
             <div class="details-column">
                 <p><strong>Travel Duration:</strong> {{ flight.travel_duration_hours }} hours and {{ flight.travel_duration_minutes }} minutes</p>
                 <p><strong>Departure Time:</strong> {{ flight.departure_time|date:"H:i" }}</p>

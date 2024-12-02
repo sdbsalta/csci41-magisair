@@ -4,11 +4,11 @@ from django.db import models
 from django.utils import timezone
 
 class Passenger(models.Model):
-    passenger_id = models.CharField(primary_key=True, max_length=17, unique=True)
+    passenger_id = models.CharField(primary_key=True, max_length=20, unique=True)
     name = models.CharField(max_length=255)
-    first_name = models.CharField(max_length=20, null=True);
-    middle_name = models.CharField(max_length=20, null=True, blank=True);
-    last_name = models.CharField(max_length=20, null=True);
+    first_name = models.CharField(max_length=50, null=True);
+    middle_name = models.CharField(max_length=50, null=True, blank=True);
+    last_name = models.CharField(max_length=50, null=True);
     birth_date = models.DateField()
     GENDER_CHOICES = [('M', 'Male'), ('F', 'Female'), ('O', 'Others')]
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
@@ -19,7 +19,7 @@ class Passenger(models.Model):
     
     def save(self, *args, **kwargs):
         if not self.passenger_id:
-            today = timezone.now().strftime('%y%m%d')
+            today = timezone.now().strftime('%Y%m%d')
             last_passenger = Passenger.objects.filter(passenger_id__startswith=f'PAS-{today}').order_by('-passenger_id').first()
             last_seq_num = int(last_passenger.passenger_id[-6:]) if last_passenger else 0
             seq_num = last_seq_num + 1
@@ -54,8 +54,8 @@ class Booking(models.Model):
     def save(self, *args, **kwargs):
         if not self.booking_id:
             # Get the current date in YYYYMMDD format
-            today = timezone.now().strftime('%y%m%d')
-            
+            today = timezone.now().strftime('%Y%m%d')
+ 
             # Generate a random sequence of 6 uppercase letters
             random_seq = self.generate_random_sequence()
             

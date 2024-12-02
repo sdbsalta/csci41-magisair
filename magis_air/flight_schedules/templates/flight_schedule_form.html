@@ -30,7 +30,7 @@
         display: block; 
     }
 
-    .addcrewmems .form-column{
+    .addcrewmems .form-column {
         flex: 1; 
         box-sizing: border-box; 
         text-align: left;
@@ -43,21 +43,21 @@
     .addsched-container .form {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        column-gap: 40px; 
     }
 
-    .addsched-container .form p {
+    .addsched-container .form p,
+    .addsched-container .form .form-group {
+        display: flex;
+        flex-direction: column;
         margin: 10px 0;
-    }
-
-    .addsched-container .form p strong {
-        display: inline-block;
-        margin-bottom: 5px;
     }
 
     .addsched-container .form input, .form select {
         width: 100%;
         padding: 10px;
         font-size: 1rem;
+        margin-top: 5px; 
     }
 
     .addsched-container .form .flight-row {
@@ -65,7 +65,7 @@
     }
 
     .addsched-container .form input[type="text"] {
-        width: 87%; 
+        width: 100%; 
     }
 
     .addsched-container .crew-members-container {
@@ -107,13 +107,10 @@
             <div class="form">
                 {% if object %}
                 <p>
-                    <strong>Schedule ID:</strong>
+                    <label for="id_schedule_id"><strong>Schedule ID:</strong></label>
                     <input type="text" id="id_schedule_id" name="schedule_id" value="{{ form.schedule_id.value }}" readonly>
-                </p>                
+                </p>
                 {% endif %}
-                <!--<p>
-                    <strong>Date:</strong> {{ form.date }}
-                </p>-->
 
                 <div class="form-group">
                     <label for="date"><strong>Select Date:</strong></label>
