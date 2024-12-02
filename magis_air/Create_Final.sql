@@ -5,19 +5,10 @@ BEGIN;
 CREATE TABLE "crew_assignments_crewmember" (
     "crew_id" varchar(6) NOT NULL PRIMARY KEY,
     "role" varchar(100) NOT NULL,
-    "first_name" varchar(20) NULL,
-    "last_name" varchar(20) NULL,
+    "first_name" varchar(20) NOT NULL,
+    "last_name" varchar(20) NOT NULL,
     "middle_name" varchar(20) NULL
 );
-
--- EDIT IT TO
--- CREATE TABLE "crew_assignments_crewmember" (
---     "crew_id" varchar(6) NOT NULL PRIMARY KEY,
---     "role" varchar(100) NOT NULL,
---     "first_name" varchar(20) NOT NULL,
---     "last_name" varchar(20) NOT NULL,
---     "middle_name" varchar(20)
--- );
 
 -- Create FlightSchedule table
 CREATE TABLE "crew_assignments_flightschedule" (
