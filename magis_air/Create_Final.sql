@@ -106,8 +106,6 @@ CREATE INDEX "flight_booking_booking_flight_id_6eb7a670" ON "flight_booking_book
 CREATE INDEX "flight_booking_booking_flight_id_6eb7a670_like" ON "flight_booking_booking" ("flight_id" varchar_pattern_ops);
 CREATE INDEX "flight_booking_booking_passenger_id_c4f9fcdc" ON "flight_booking_booking" ("passenger_id");
 CREATE INDEX "flight_booking_booking_passenger_id_c4f9fcdc_like" ON "flight_booking_booking" ("passenger_id" varchar_pattern_ops);
-CREATE INDEX "flight_booking_booking_additional_items_booking_id_4c3b7b5b" ON "flight_booking_booking_additional_items" ("booking_id");
-CREATE INDEX "flight_booking_booking_a_booking_id_4c3b7b5b_like" ON "flight_booking_booking_additional_items" ("booking_id" varchar_pattern_ops);
 
 
 ------------------------------------ Flight Schedules -------------------------------------------

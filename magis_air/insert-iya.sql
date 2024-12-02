@@ -40,13 +40,6 @@ VALUES
     ('SCH-20241203-000001', '000003'),
     ('SCH-20241201-000001', '000004');
 
--- Insert data into CrewMember's flight schedules table
-INSERT INTO "crew_assignments_crewmember_flight_schedules" ("crewmember_id", "flightschedule_id")
-VALUES
-    ('000001', 'SCH-20241201-000001'),
-    ('000002', 'SCH-20241202-000001'),
-    ('000003', 'SCH-20241203-000001'),
-    ('000004', 'SCH-20241201-000001');
 
 ------------------------------------ FLIGHT BOOKING ----------------------------------------------
 
