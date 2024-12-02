@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
 {% load static %}
 
 {% block title %}Flights{% endblock %}
@@ -100,13 +101,13 @@
     }
 
     .flight-form button:hover {
-        background-color: var(--primary-07); /* Slightly darker shade on hover */
+        background-color: var(--primary-07); 
     }
 
     
     .spacer {
         border-left: 2px solid var(--secondary-10);
-        height: 30px; /* Matches input box height */
+        height: 30px; 
     }
 
 </style>
@@ -122,25 +123,21 @@
     <form method="GET" action="{% url 'flight_routes:flight_list' %}">
         {% csrf_token %}
         <div class="flight-form">
-            <!-- Origin Dropdown -->
+            
             <div class="form-group">
                 <label for="origin"><strong>Select Origin:</strong></label>
                 {{ form.origin }}
             </div>
 
-            <!-- Spacer -->
             <div class="spacer"></div>
             
-            <!-- Destination Dropdown -->
             <div class="form-group">
                 <label for="destination"><strong>Select Destination:</strong></label>
                 {{ form.destination }}
             </div>
 
-            <!-- Search Button -->
             <button type="submit" class="button primary filled">Search</button>
 
-            <!-- Clear Filter -->
             <div class="pass-form" style="justify-content: space-between;">
                 <a href="{% url 'flight_routes:flight_list' %}">
                     <button class="button primary outlined" type="button">Clear Filter</button>
@@ -149,7 +146,6 @@
         </div>
     </form>
 
-    <!-- Table to display flight information -->
     <table>
         <thead>
             <tr>
@@ -159,7 +155,7 @@
                 <th>Travel Duration</th>
                 <th>Departure Time</th>
                 <th>Arrival Time</th>
-                <th>Actions</th> <!-- For Edit and Delete links -->
+                <th>Actions</th> 
             </tr>
         </thead>
         <tbody>

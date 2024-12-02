@@ -8,8 +8,6 @@
     border-radius: 5px;
 }
 
-/* TODO update hover */
-/* TODO add accents buttonts */
 .button.primary.filled {
     --button-enabled-bg-color: var(--primary);
     --button-enabled-border-color: var(--primary);
