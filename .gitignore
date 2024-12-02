@@ -14,3 +14,8 @@ magis_air/__pycache__/
 
 myenv/
 venv/
+
+requirements.txt
+
+SQL.sql
+createstatements.sql
