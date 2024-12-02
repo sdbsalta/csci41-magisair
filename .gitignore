@@ -19,3 +19,5 @@ requirements.txt
 
 SQL.sql
 createstatements.sql
+
+insert-iya.sql
