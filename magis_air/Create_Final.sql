@@ -10,6 +10,15 @@ CREATE TABLE "crew_assignments_crewmember" (
     "middle_name" varchar(20) NULL
 );
 
+-- EDIT IT TO
+-- CREATE TABLE "crew_assignments_crewmember" (
+--     "crew_id" varchar(6) NOT NULL PRIMARY KEY,
+--     "role" varchar(100) NOT NULL,
+--     "first_name" varchar(20) NOT NULL,
+--     "last_name" varchar(20) NOT NULL,
+--     "middle_name" varchar(20)
+-- );
+
 -- Create FlightSchedule table
 CREATE TABLE "crew_assignments_flightschedule" (
     "schedule_id" varchar(20) NOT NULL PRIMARY KEY,
@@ -72,7 +81,9 @@ CREATE TABLE "flight_booking_additionalitem" (
 -- Create Passenger table with constraints
 CREATE TABLE "flight_booking_passenger" (
     "passenger_id" varchar(15) NOT NULL PRIMARY KEY,
-    "name" varchar(255) NOT NULL,
+    "first_name" varchar(20) NOT NULL,
+    "last_name" varchar(20) NOT NULL,
+    "middle_name" varchar(20) NULL
     "birth_date" date NOT NULL,
     "gender" varchar(1) NOT NULL
 );
